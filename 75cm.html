@@ -272,6 +272,30 @@
   }
   .row.tri .seg button.active.is-good { color: #1d7a3a; background: var(--good-soft); }
   .row.tri .seg button.active.is-warn { color: #b56500; background: #fff4dd; }
+  .row.tri { flex-direction: column; align-items: stretch; gap: 0; padding: 14px 18px; }
+  .row.tri .tri-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .row.tri .tri-note {
+    width: 100%;
+    border: 0;
+    margin-top: 8px;
+    padding: 6px 0 4px;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--ink-2);
+    background: transparent;
+    outline: none;
+    border-bottom: 1px dashed transparent;
+    transition: border-color 0.15s ease;
+  }
+  .row.tri .tri-note:focus { border-bottom-color: var(--line); }
+  .row.tri .tri-note::placeholder { color: var(--muted-2); font-size: 12px; }
+
+  /* bottles (water) */
+  .row.counter .bottles { display: flex; gap: 6px; align-items: flex-end; margin-top: 2px; }
+  .bottle-svg { width: 16px; height: 26px; color: var(--muted-2); display: block; transition: color 0.18s ease; }
+  .bottle-svg.full, .bottle-svg.half { color: var(--ink); }
+  .row.counter.on .bottle-svg.full,
+  .row.counter.on .bottle-svg.half { color: var(--good); }
 
   /* counter (水) */
   .row.counter { padding: 14px 14px 14px 18px; }
@@ -513,6 +537,82 @@
   .cal-detail .checks { display: flex; gap: 4px; margin-top: 10px; }
   .cal-detail .checks .c { width: 9px; height: 9px; border-radius: 2.5px; background: var(--line); }
   .cal-detail .checks .c.on { background: var(--ink); }
+
+  .cd-list { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .cd-line { display: flex; align-items: center; gap: 8px; font-size: 12px; flex-wrap: wrap; }
+  .cd-line .k { color: var(--muted); font-weight: 500; min-width: 84px; font-size: 12px; }
+  .cd-line .vv { font-weight: 600; padding: 2px 9px; border-radius: 999px; background: #fff; border: 1px solid var(--line); color: var(--ink-2); font-size: 11px; }
+  .cd-line .vv.good { background: var(--good-soft); color: #1d7a3a; border-color: transparent; }
+  .cd-line .vv.warn { background: #fff4dd; color: #b56500; border-color: transparent; }
+  .cd-line .vv.skip { background: var(--line-soft); color: var(--muted); border-color: transparent; }
+  .cd-line .vv.none { color: var(--muted-2); }
+  .cd-line .nt { font-size: 11px; color: var(--muted); flex-basis: 100%; padding-left: 92px; margin-top: -2px; }
+
+  .cd-actions { margin-top: 14px; display: flex; gap: 8px; }
+  .cd-edit {
+    background: #fff; border: 1px solid var(--line); color: var(--ink-2);
+    padding: 8px 14px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .cd-edit:active { background: var(--line-soft); }
+  .cd-edit.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .cd-form { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+  .cd-field { background: #fff; border-radius: 12px; padding: 10px 12px; border: 1px solid var(--line-soft); }
+  .cd-field-stack { display: flex; flex-direction: column; gap: 6px; }
+  .cd-field-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .cd-k { font-size: 12px; color: var(--muted); font-weight: 600; }
+  .cd-seg { display: flex; gap: 4px; background: var(--line-soft); border-radius: 999px; padding: 3px; }
+  .cd-seg-btn {
+    border: 0; background: transparent; font-family: inherit;
+    font-size: 11px; font-weight: 600; color: var(--muted);
+    padding: 5px 10px; border-radius: 999px; cursor: pointer;
+  }
+  .cd-seg-btn.active { background: #fff; color: var(--ink); }
+  .cd-seg-btn.active.is-good { color: #1d7a3a; background: var(--good-soft); }
+  .cd-seg-btn.active.is-warn { color: #b56500; background: #fff4dd; }
+  .cd-note {
+    width: 100%; border: 0; margin-top: 6px; padding: 6px 0 2px;
+    font-family: inherit; font-size: 12px; color: var(--ink-2);
+    background: transparent; outline: none;
+    border-bottom: 1px dashed var(--line);
+  }
+  .cd-note::placeholder { color: var(--muted-2); }
+  .cd-counter { display: flex; align-items: center; gap: 10px; }
+  .cd-cb {
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid var(--line); background: #fff;
+    font-family: inherit; font-size: 16px; font-weight: 600;
+    color: var(--ink-2); cursor: pointer; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cd-cb:active { background: var(--line-soft); transform: scale(0.94); }
+  .cd-count { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .cd-count .slash { font-size: 11px; color: var(--muted); font-weight: 500; margin-left: 2px; }
+  .cd-toggle {
+    border: 1px solid var(--line); background: #fff;
+    color: var(--muted); font-family: inherit;
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+  }
+  .cd-toggle.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .cd-num-wrap { display: flex; align-items: baseline; gap: 4px; }
+  .cd-num {
+    width: 80px; border: 0; background: transparent;
+    text-align: right; font-family: var(--font-num);
+    font-size: 18px; font-weight: 600; color: var(--ink);
+    outline: none; padding: 4px 0;
+    border-bottom: 1.5px solid transparent;
+  }
+  .cd-num:focus { border-bottom-color: var(--ink); }
+  .cd-unit { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .cd-text {
+    width: 100%; border: 0; resize: none;
+    font-family: var(--font-jp); font-size: 13px;
+    color: var(--ink); background: transparent;
+    outline: none; min-height: 44px; padding: 4px 0 0;
+  }
+  .cd-text::placeholder { color: var(--muted-2); }
 
   /* settings panel */
   details.panel.settings summary .ic { background: var(--bg); }
@@ -826,14 +926,16 @@
         { v: 'over', label: '食べすぎ' },
         { v: 'skip', label: '抜き' },
       ] },
-    { id: 'evening', label: '夕プロテイン', type: 'binary' },
+    { id: 'evening', label: '夕食前プロテイン', type: 'binary' },
     { id: 'water', label: '水', type: 'counter', target: 5 },
     { id: 'vacuum', label: '腹真空 5分', type: 'binary' },
   ];
   const VISIBLE_ITEMS = ITEMS.filter(i => i.id !== 'vacuum');
 
+  function triV(val) { return (val && typeof val === 'object') ? val.v : val; }
+  function triNote(val) { return (val && typeof val === 'object' && val.note) ? val.note : ''; }
   function isDone(item, val) {
-    if (item.type === 'tri') return val === 'ok';
+    if (item.type === 'tri') return triV(val) === 'ok';
     if (item.type === 'counter') return (val || 0) >= item.target;
     return val === true;
   }
@@ -841,6 +943,15 @@
     if (item.type === 'tri') return null;
     if (item.type === 'counter') return 0;
     return false;
+  }
+  function escapeAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function escapeText(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function bottleHtml(state) {
+    const fillH = state === 'full' ? 14 : state === 'half' ? 7 : 0;
+    return `<svg class="bottle-svg ${state}" viewBox="0 0 18 28" aria-hidden="true">
+      <path d="M7 2 h4 v3 q3 1 3 4 v13 q0 3 -3 3 h-6 q-3 0 -3 -3 v-13 q0 -3 3 -4 z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      ${fillH > 0 ? `<rect x="3.6" y="${24 - fillH}" width="10.8" height="${fillH}" rx="1.2" fill="currentColor" opacity="0.65"/>` : ''}
+    </svg>`;
   }
 
   let logs = [];
@@ -875,8 +986,12 @@
     }
     ITEMS.forEach(i => {
       if (!(i.id in e.checks)) e.checks[i.id] = defaultVal(i);
-      if (i.type === 'tri' && typeof e.checks[i.id] === 'boolean') {
-        e.checks[i.id] = e.checks[i.id] ? 'ok' : null;
+      if (i.type === 'tri') {
+        let cur = e.checks[i.id];
+        if (typeof cur === 'boolean') cur = cur ? { v: 'ok', note: '' } : null;
+        else if (typeof cur === 'string') cur = { v: cur, note: '' };
+        else if (cur && typeof cur === 'object' && !('v' in cur)) cur = null;
+        e.checks[i.id] = cur;
       }
     });
     return e;
@@ -979,23 +1094,27 @@
         const count = (typeof val === 'number') ? val : 0;
         const target = item.target;
         row.className = 'row counter' + (done ? ' on' : '');
-        const pips = [];
+        const bottles = [];
         for (let i = 0; i < target; i++) {
-          pips.push(`<div class="pip ${i < count ? 'on' : ''}"></div>`);
+          let state = 'empty';
+          if (count >= i + 1) state = 'full';
+          else if (count >= i + 0.5) state = 'half';
+          bottles.push(bottleHtml(state));
         }
+        const display = Number.isInteger(count) ? String(count) : count.toFixed(1);
         row.innerHTML = `
           <div class="text">
             <div class="label-line">
               <div class="label">${item.label}</div>
-              <div class="count num">${count}<span class="slash">/${target}</span></div>
+              <div class="count num">${display}<span class="slash">/${target}</span></div>
             </div>
-            <div class="pips">${pips.join('')}</div>
+            <div class="bottles">${bottles.join('')}</div>
           </div>
           <div class="ctrls">
-            <button type="button" class="cb minus" data-act="-" aria-label="減らす">
+            <button type="button" class="cb minus" data-act="-" aria-label="0.5減らす">
               <svg viewBox="0 0 24 24"><line x1="6" y1="12" x2="18" y2="12"/></svg>
             </button>
-            <button type="button" class="cb plus" data-act="+" aria-label="足す">
+            <button type="button" class="cb plus" data-act="+" aria-label="0.5足す">
               <svg viewBox="0 0 24 24"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg>
             </button>
           </div>
@@ -1003,19 +1122,24 @@
         row.querySelectorAll('.cb').forEach(b => {
           b.addEventListener('click', (ev) => {
             ev.stopPropagation();
-            bumpCounter(item.id, b.dataset.act === '+' ? 1 : -1);
+            bumpCounter(item.id, b.dataset.act === '+' ? 0.5 : -0.5);
           });
         });
       } else if (item.type === 'tri') {
+        const curV = triV(val);
+        const note = triNote(val);
         row.className = 'row tri' + (done ? ' on' : '');
         const segBtns = item.options.map(opt => {
-          const active = val === opt.v;
+          const active = curV === opt.v;
           const tone = opt.v === 'ok' ? 'is-good' : (opt.v === 'over' ? 'is-warn' : 'is-skip');
           return `<button type="button" data-v="${opt.v}" class="${active ? 'active ' + tone : tone}">${opt.label}</button>`;
         }).join('');
         row.innerHTML = `
-          <div class="text"><div class="label">${item.label}</div></div>
-          <div class="seg" data-id="${item.id}">${segBtns}</div>
+          <div class="tri-head">
+            <div class="label">${item.label}</div>
+            <div class="seg" data-id="${item.id}">${segBtns}</div>
+          </div>
+          <input type="text" class="tri-note" placeholder="食べたものメモ（任意）" value="${escapeAttr(note)}">
         `;
         row.querySelectorAll('.seg button').forEach(b => {
           b.addEventListener('click', (ev) => {
@@ -1023,6 +1147,11 @@
             setTri(item.id, b.dataset.v);
           });
         });
+        const noteInput = row.querySelector('.tri-note');
+        const saveNote = () => setTriNote(item.id, noteInput.value.trim());
+        noteInput.addEventListener('blur', saveNote);
+        noteInput.addEventListener('change', saveNote);
+        noteInput.addEventListener('click', (ev) => ev.stopPropagation());
       } else {
         row.className = 'row binary' + (done ? ' on' : '');
         row.innerHTML = `
@@ -1069,11 +1198,13 @@
   }
 
   function bumpCounter(id, delta) {
+    const item = ITEMS.find(i => i.id === id);
     const e = getEntry(today);
     const cur = (typeof e.checks[id] === 'number') ? e.checks[id] : 0;
-    const before = cur >= 5;
-    e.checks[id] = Math.max(0, Math.min(99, cur + delta));
-    const after = e.checks[id] >= 5;
+    const before = isDone(item, cur);
+    const next = Math.max(0, Math.min(99, Math.round((cur + delta) * 2) / 2));
+    e.checks[id] = next;
+    const after = isDone(item, next);
     persist();
     renderChecklist();
     renderDial();
@@ -1085,7 +1216,12 @@
   function setTri(id, v) {
     const e = getEntry(today);
     const before = ITEMS.every(i => isDone(i, e.checks[i.id]));
-    e.checks[id] = (e.checks[id] === v) ? null : v;
+    const cur = e.checks[id];
+    if (triV(cur) === v) {
+      e.checks[id] = triNote(cur) ? { v: null, note: triNote(cur) } : null;
+    } else {
+      e.checks[id] = { v, note: triNote(cur) };
+    }
     const after = ITEMS.every(i => isDone(i, e.checks[i.id]));
     persist();
     renderChecklist();
@@ -1093,6 +1229,14 @@
     renderCalendar();
     vibrate(10);
     if (!before && after) celebrate();
+  }
+  function setTriNote(id, note) {
+    const e = getEntry(today);
+    const cur = e.checks[id];
+    const v = triV(cur);
+    e.checks[id] = (v == null && !note) ? null : { v: v || null, note };
+    persist();
+    renderCalendar();
   }
 
   let _lastAllDone = false;
@@ -1188,6 +1332,7 @@
       cell.innerHTML = `<div class="d">${cd}</div>${entry && entry.mindset ? '<div class="pip"></div>' : ''}`;
       cell.addEventListener('click', () => {
         calSelected = (calSelected === ds) ? null : ds;
+        calEditMode = false;
         renderCalendar();
       });
       grid.appendChild(cell);
@@ -1197,10 +1342,14 @@
     renderCalDetail();
   }
 
+  let calEditMode = false;
+
   function renderCalDetail() {
     const det = $('#cal-detail');
-    if (!calSelected) { det.style.display = 'none'; return; }
+    if (!calSelected) { det.style.display = 'none'; calEditMode = false; return; }
     det.style.display = 'block';
+
+    if (calEditMode) { renderCalDetailEdit(); return; }
 
     const entry = logs.find(l => l.date === calSelected);
     const d = new Date(calSelected + 'T00:00:00');
@@ -1218,7 +1367,11 @@
     const hasWaist = entry && entry.waist != null;
     const hasWeight = entry && entry.weight != null;
     const doneCount = entry && entry.checks ? ITEMS.filter(it => isDone(it, entry.checks[it.id])).length : 0;
-    const hasChecks = entry && entry.checks && ITEMS.some(it => entry.checks[it.id] !== defaultVal(it));
+    const hasChecks = entry && entry.checks && ITEMS.some(it => {
+      const v = entry.checks[it.id];
+      if (it.type === 'tri') return triV(v) != null || triNote(v);
+      return v !== defaultVal(it);
+    });
     const hasAnything = hasMindset || hasWaist || hasWeight || hasChecks;
 
     let html = `<div class="dh"><div class="date">${dateLabel}</div>${tag}</div>`;
@@ -1226,7 +1379,7 @@
       html += `<div class="empty-state">${diff > 0 ? 'これからの日' : 'この日の記録はない'}</div>`;
     } else {
       if (hasMindset) {
-        html += `<div class="mind">${entry.mindset.replace(/</g,'&lt;')}</div>`;
+        html += `<div class="mind">${escapeText(entry.mindset)}</div>`;
       }
       const numsHtml = [];
       numsHtml.push(`<div class="n"><b>${doneCount}</b>/${ITEMS.length} 項目</div>`);
@@ -1234,18 +1387,208 @@
       if (hasWeight) numsHtml.push(`<div class="n"><b>${parseFloat(entry.weight).toFixed(1)}</b>kg</div>`);
       html += `<div class="nums">${numsHtml.join('')}</div>`;
       if (hasChecks) {
-        const dots = ITEMS.map(it => `<div class="c ${isDone(it, entry.checks[it.id]) ? 'on' : ''}"></div>`).join('');
-        html += `<div class="checks">${dots}</div>`;
+        const lines = [];
+        ITEMS.forEach(it => {
+          const v = entry.checks[it.id];
+          if (it.type === 'tri') {
+            const cv = triV(v);
+            const note = triNote(v);
+            if (cv == null && !note) return;
+            const opt = cv ? it.options.find(o => o.v === cv) : null;
+            const tone = cv === 'ok' ? 'good' : (cv === 'over' ? 'warn' : (cv === 'skip' ? 'skip' : 'none'));
+            const valHtml = opt ? `<span class="vv ${tone}">${opt.label}</span>` : `<span class="vv none">未選択</span>`;
+            const noteHtml = note ? `<span class="nt">${escapeText(note)}</span>` : '';
+            lines.push(`<div class="cd-line"><span class="k">${it.label}</span>${valHtml}${noteHtml}</div>`);
+          } else if (it.type === 'counter') {
+            const n = v || 0;
+            if (n <= 0) return;
+            const display = Number.isInteger(n) ? n : n.toFixed(1);
+            const tone = isDone(it, n) ? 'good' : '';
+            lines.push(`<div class="cd-line"><span class="k">${it.label}</span><span class="vv ${tone}">${display}/${it.target}</span></div>`);
+          } else {
+            if (v === true) {
+              lines.push(`<div class="cd-line"><span class="k">${it.label}</span><span class="vv good">完了</span></div>`);
+            }
+          }
+        });
+        if (lines.length) html += `<div class="cd-list">${lines.join('')}</div>`;
       }
     }
+    html += `<div class="cd-actions"><button class="cd-edit" id="cd-edit-btn">この日を編集</button></div>`;
     det.innerHTML = html;
+    const btn = det.querySelector('#cd-edit-btn');
+    if (btn) btn.addEventListener('click', () => { calEditMode = true; renderCalDetail(); });
+  }
+
+  function renderCalDetailEdit() {
+    const det = $('#cal-detail');
+    const date = calSelected;
+    const entry = getEntry(date);
+    const d = new Date(date + 'T00:00:00');
+    const wd = ['日','月','火','水','木','金','土'][d.getDay()];
+    const dateLabel = `${d.getMonth()+1}月${d.getDate()}日（${wd}）`;
+
+    let html = `<div class="dh"><div class="date">${dateLabel}</div><span class="tag">編集中</span></div>`;
+    html += `<div class="cd-form">`;
+
+    ITEMS.forEach(it => {
+      const v = entry.checks[it.id];
+      if (it.type === 'tri') {
+        const curV = triV(v);
+        const note = triNote(v);
+        const segBtns = it.options.map(opt => {
+          const active = curV === opt.v;
+          const tone = opt.v === 'ok' ? 'is-good' : (opt.v === 'over' ? 'is-warn' : 'is-skip');
+          return `<button type="button" data-id="${it.id}" data-v="${opt.v}" class="cd-seg-btn ${active ? 'active ' + tone : tone}">${opt.label}</button>`;
+        }).join('');
+        html += `<div class="cd-field">
+          <div class="cd-field-head"><div class="cd-k">${it.label}</div><div class="cd-seg">${segBtns}</div></div>
+          <input type="text" class="cd-note" data-id="${it.id}" placeholder="食べたものメモ（任意）" value="${escapeAttr(note)}">
+        </div>`;
+      } else if (it.type === 'counter') {
+        const n = (typeof v === 'number') ? v : 0;
+        const display = Number.isInteger(n) ? String(n) : n.toFixed(1);
+        html += `<div class="cd-field">
+          <div class="cd-field-head"><div class="cd-k">${it.label}</div>
+            <div class="cd-counter">
+              <button type="button" class="cd-cb" data-id="${it.id}" data-act="-">−</button>
+              <div class="cd-count num">${display}<span class="slash">/${it.target}</span></div>
+              <button type="button" class="cd-cb" data-id="${it.id}" data-act="+">＋</button>
+            </div>
+          </div>
+        </div>`;
+      } else {
+        const on = v === true;
+        html += `<div class="cd-field">
+          <div class="cd-field-head"><div class="cd-k">${it.label}</div>
+            <button type="button" class="cd-toggle ${on ? 'on' : ''}" data-id="${it.id}">${on ? '完了' : '未完了'}</button>
+          </div>
+        </div>`;
+      }
+    });
+
+    html += `<div class="cd-field">
+      <div class="cd-field-head"><div class="cd-k">体重</div>
+        <div class="cd-num-wrap">
+          <input type="number" step="0.1" inputmode="decimal" class="cd-num" data-field="weight" value="${entry.weight ?? ''}" placeholder="—">
+          <span class="cd-unit">kg</span>
+        </div>
+      </div>
+    </div>`;
+
+    html += `<div class="cd-field">
+      <div class="cd-field-head"><div class="cd-k">ウエスト</div>
+        <div class="cd-num-wrap">
+          <input type="number" step="0.1" inputmode="decimal" class="cd-num" data-field="waist" value="${entry.waist ?? ''}" placeholder="—">
+          <span class="cd-unit">cm</span>
+        </div>
+      </div>
+    </div>`;
+
+    html += `<div class="cd-field cd-field-stack">
+      <div class="cd-k">一言</div>
+      <textarea class="cd-text" data-field="mindset" rows="2" placeholder="今日の一言（任意）">${escapeText(entry.mindset || '')}</textarea>
+    </div>`;
+
+    html += `</div>`;
+    html += `<div class="cd-actions">
+      <button class="cd-edit primary" id="cd-done-btn">完了</button>
+    </div>`;
+
+    det.innerHTML = html;
+
+    det.querySelectorAll('.cd-seg-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        const id = b.dataset.id;
+        const v = b.dataset.v;
+        const e = getEntry(date);
+        const cur = e.checks[id];
+        if (triV(cur) === v) {
+          e.checks[id] = triNote(cur) ? { v: null, note: triNote(cur) } : null;
+        } else {
+          e.checks[id] = { v, note: triNote(cur) };
+        }
+        persist();
+        renderCalDetailEdit();
+        renderCalendar();
+        renderDial();
+      });
+    });
+    det.querySelectorAll('.cd-note').forEach(inp => {
+      const save = () => {
+        const id = inp.dataset.id;
+        const e = getEntry(date);
+        const cur = e.checks[id];
+        const v = triV(cur);
+        const note = inp.value.trim();
+        e.checks[id] = (v == null && !note) ? null : { v: v || null, note };
+        persist();
+      };
+      inp.addEventListener('blur', save);
+      inp.addEventListener('change', save);
+    });
+    det.querySelectorAll('.cd-cb').forEach(b => {
+      b.addEventListener('click', () => {
+        const id = b.dataset.id;
+        const item = ITEMS.find(i => i.id === id);
+        const e = getEntry(date);
+        const cur = (typeof e.checks[id] === 'number') ? e.checks[id] : 0;
+        const delta = b.dataset.act === '+' ? 0.5 : -0.5;
+        e.checks[id] = Math.max(0, Math.min(99, Math.round((cur + delta) * 2) / 2));
+        persist();
+        renderCalDetailEdit();
+        renderCalendar();
+        renderDial();
+      });
+    });
+    det.querySelectorAll('.cd-toggle').forEach(b => {
+      b.addEventListener('click', () => {
+        const id = b.dataset.id;
+        const e = getEntry(date);
+        e.checks[id] = !e.checks[id];
+        persist();
+        renderCalDetailEdit();
+        renderCalendar();
+        renderDial();
+      });
+    });
+    det.querySelectorAll('.cd-num').forEach(inp => {
+      const save = () => {
+        const f = inp.dataset.field;
+        const e = getEntry(date);
+        e[f] = inp.value === '' ? null : parseFloat(inp.value);
+        persist();
+        if (date === today) { fillToday(); renderMeasureSummary(); }
+        renderCalendar();
+        renderDial();
+      };
+      inp.addEventListener('blur', save);
+      inp.addEventListener('change', save);
+    });
+    const txt = det.querySelector('.cd-text');
+    if (txt) {
+      const save = () => {
+        const e = getEntry(date);
+        e.mindset = txt.value.trim();
+        persist();
+        if (date === today) { fillToday(); renderMindsetSummary(); }
+        renderCalendar();
+      };
+      txt.addEventListener('blur', save);
+    }
+    const doneBtn = det.querySelector('#cd-done-btn');
+    if (doneBtn) doneBtn.addEventListener('click', () => {
+      calEditMode = false;
+      renderCalendar();
+      if (date === today) { renderChecklist(); renderVacuumCard(); renderMeasureSummary(); renderMindsetSummary(); fillToday(); }
+    });
   }
 
   function fillToday() {
     const e = getEntry(today);
-    if (e.weight != null) $('#weight-input').value = e.weight;
-    if (e.waist != null) $('#waist-input').value = e.waist;
-    if (e.mindset) $('#mindset-input').value = e.mindset;
+    $('#weight-input').value = e.weight != null ? e.weight : '';
+    $('#waist-input').value = e.waist != null ? e.waist : '';
+    $('#mindset-input').value = e.mindset || '';
   }
 
   // ============ Toast ============
@@ -1372,7 +1715,9 @@
     // re-render when tab becomes visible (e.g., returning from vacuum.html)
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'visible') {
+        renderDate();
         load();
+        fillToday();
         renderChecklist();
         renderVacuumCard();
         renderDial();
@@ -1381,6 +1726,23 @@
         renderMindsetSummary();
       }
     });
+
+    // detect day rollover while app is open
+    setInterval(() => {
+      const newToday = fmtDate(new Date());
+      if (newToday !== today) {
+        today = newToday;
+        _lastAllDone = false;
+        renderDate();
+        fillToday();
+        renderChecklist();
+        renderVacuumCard();
+        renderDial();
+        renderCalendar();
+        renderMeasureSummary();
+        renderMindsetSummary();
+      }
+    }, 60 * 1000);
 
     // Service worker registration (silent fail OK)
     if ('serviceWorker' in navigator) {
