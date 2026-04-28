@@ -785,6 +785,13 @@
       </div>
       <div class="item">
         <div class="l">
+          <div class="t">データをファイルに書き出す</div>
+          <div class="s">記録をJSONでダウンロード。バックアップに。</div>
+        </div>
+        <button id="export-btn">書き出す</button>
+      </div>
+      <div class="item">
+        <div class="l">
           <div class="t" style="color:var(--danger)">全データを削除</div>
           <div class="s">記録を全部消す。戻せない。</div>
         </div>
@@ -1331,6 +1338,25 @@
         localStorage.removeItem(STORAGE_KEY);
         location.reload();
       }
+    });
+
+    $('#export-btn').addEventListener('click', () => {
+      const payload = {
+        app: '75cm',
+        version: STORAGE_KEY,
+        exportedAt: new Date().toISOString(),
+        logs,
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `75cm-${fmtDate(new Date())}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      showToast('書き出した');
     });
 
     $('#reminder-close').addEventListener('click', () => {
