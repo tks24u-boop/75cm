@@ -45,6 +45,10 @@ header p{font-size:.9rem;opacity:.86;margin-top:8px;max-width:58ch}
 }
 .printbtn:hover{background:#EAF1F8}
 .printbtn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.hbtns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.hbtns .printbtn{margin-top:16px;text-decoration:none}
+.printbtn.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.45);box-shadow:none}
+.printbtn.ghost:hover{background:rgba(255,255,255,.22)}
 
 /* ========== レイアウト ========== */
 .grid{display:grid;grid-template-columns:370px 1fr;gap:22px;align-items:start}
@@ -330,7 +334,10 @@ footer{text-align:center;margin-top:28px;font-size:.77rem;color:var(--muted);lin
     <div class="eyebrow">公立学校共済組合 鹿児島支部 対応</div>
     <h1>教職員共済 トリプルガード<br>ライフプラン提案書</h1>
     <p>公的保障で足りない分はいくらか。その設計で実際にいくら受け取れるか。毎月いくら払うか。この3つをA4表裏で持ち帰れる形にまとめます。</p>
-    <button class="printbtn" onclick="doPrint()">A4表裏で印刷 / PDF保存</button>
+    <div class="hbtns">
+      <button class="printbtn" onclick="doPrint()">A4表裏で印刷 / PDF保存</button>
+      <a class="printbtn ghost" href="tripleguard-product.html">商品内容ガイドを見る →</a>
+    </div>
   </header>
 
   <div class="grid">
