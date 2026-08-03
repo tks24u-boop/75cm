@@ -81,7 +81,8 @@ td em{display:block;font-style:normal;font-size:.76rem;color:var(--muted);margin
 
 .builder{display:grid;grid-template-columns:280px 1fr;gap:22px;align-items:start}
 @media(max-width:860px){.builder{grid-template-columns:1fr}}
-.ctrl{border:1px solid var(--line);border-radius:11px;padding:16px 18px;background:#FBFCFD}
+.ctrl{border:1px solid var(--line);border-radius:11px;padding:16px 18px;background:#FBFCFD;
+  container-type:inline-size}
 .field{margin-bottom:13px}
 .field:last-child{margin-bottom:0}
 label{display:block;font-size:.8rem;font-weight:700;margin-bottom:5px;color:#3B4956}
@@ -89,11 +90,38 @@ input[type=number]{width:100%;padding:9px 11px;border:1px solid var(--line-stron
   font-family:"IBM Plex Mono",monospace;font-size:1rem;font-weight:500;color:var(--text);background:#fff;text-align:right}
 input:focus-visible,button:focus-visible{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(42,111,176,.22)}
 .hint{font-size:.74rem;color:var(--muted);margin-top:4px;line-height:1.5}
-.check{display:flex;align-items:center;gap:9px;padding:7px 10px;border:1px solid var(--line);
-  border-radius:8px;margin-bottom:6px;cursor:pointer;background:#fff;font-size:.81rem;font-weight:500}
-.check:hover{border-color:var(--sky);background:var(--sky-soft)}
-.check input{width:16px;height:16px;flex:none;accent-color:var(--sky)}
-.check .r{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--muted)}
+/* ---- 口数ステッパー ---- */
+.stepper{display:grid;grid-template-columns:46px 1fr 46px;gap:8px}
+.stepper input{text-align:center}
+.sbtn{border:1px solid var(--line-strong);background:#fff;border-radius:9px;
+  font-family:inherit;font-size:1.3rem;font-weight:700;color:var(--ink);cursor:pointer;
+  line-height:1;display:grid;place-items:center;min-height:44px;user-select:none;padding:0}
+.sbtn:hover:not(:disabled){background:var(--sky-soft);border-color:var(--sky)}
+.sbtn:active:not(:disabled){transform:translateY(1px)}
+.sbtn:disabled{opacity:.3;cursor:not-allowed}
+
+/* ---- 四角いトグルタイル ---- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{display:block;position:relative;margin:0;cursor:pointer}
+.tile input{position:absolute;opacity:0;width:1px;height:1px}
+.tile .tin{display:block;position:relative;border:1.5px solid var(--line-strong);
+  border-radius:11px;padding:10px 30px 9px 11px;background:#fff;min-height:62px;
+  transition:background .15s,border-color .15s}
+.tile:hover .tin{border-color:var(--sky);background:var(--sky-soft)}
+.tile input:checked + .tin{border-color:var(--sky);background:var(--sky-soft);box-shadow:inset 0 0 0 1px var(--sky)}
+.tile input:focus-visible + .tin{outline:3px solid rgba(42,111,176,.35);outline-offset:2px}
+.tile .tname{display:block;font-size:.82rem;font-weight:700;color:#4A5866;line-height:1.35}
+.tile input:checked + .tin .tname{color:var(--ink)}
+.tile .tmeta{display:block;font-size:.71rem;color:var(--muted);margin-top:3px;
+  font-family:"IBM Plex Mono",monospace}
+.tile .tmark{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:5px;
+  border:1.5px solid var(--line-strong);background:#fff}
+.tile input:checked + .tin .tmark{background:var(--sky);border-color:var(--sky)}
+.tile input:checked + .tin .tmark::after{content:"";position:absolute;left:5px;top:1px;
+  width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+@media(max-width:420px){.tiles{grid-template-columns:1fr}.tile .tin{min-height:0}}
+/* サイドバーに入ると1列あたりが狭く、特約名が途中で折り返すため1列に切り替える */
+@container (max-width:380px){.tiles{grid-template-columns:1fr}.tile .tin{min-height:0}}
 
 .result{border:1px solid var(--line);border-radius:11px;padding:18px 20px;background:#FAFCFE;margin-bottom:16px}
 .cap{font-size:.78rem;font-weight:700;color:var(--muted)}
@@ -249,7 +277,7 @@ footer{text-align:center;margin-top:26px;font-size:.77rem;color:var(--muted);lin
               <td class="num">—<span class="tag tag-tbd">要確認</span></td></tr>
           <tr class="hi"><td><b>ガン診断特約</b></td><td>ガンと診断されたとき（一時金）</td>
               <td class="num">1口 20万円<span class="tag tag-ok">確認済</span></td></tr>
-          <tr><td><b>生活習慣病入院特約</b></td><td>所定の生活習慣病で入院したとき<em>糖尿病・心疾患・高血圧性疾患・脳血管疾患</em></td>
+          <tr><td><b>生活習慣病特約</b></td><td>所定の生活習慣病で入院したとき<em>糖尿病・心疾患・高血圧性疾患・脳血管疾患</em></td>
               <td class="num">—<span class="tag tag-tbd">要確認</span></td></tr>
           <tr><td><b>女性特定疾病特約</b></td><td>女性特定疾病で入院したとき<em>子宮筋腫・甲状腺の障害など。ガンは対象外</em></td>
               <td class="num">—<span class="tag tag-tbd">要確認</span></td></tr>
@@ -283,21 +311,33 @@ footer{text-align:center;margin-top:26px;font-size:.77rem;color:var(--muted);lin
       <div class="ctrl">
         <div class="field">
           <label for="age">年齢</label>
-          <input type="number" id="age" value="40" min="20" max="90" oninput="recalc()">
+          <div class="stepper">
+            <button type="button" class="sbtn" id="age_dn" onclick="bump('age',-1)" aria-label="年齢を1減らす">−</button>
+            <input type="number" id="age" value="40" min="20" max="90" oninput="recalc()">
+            <button type="button" class="sbtn" id="age_up" onclick="bump('age',1)" aria-label="年齢を1増やす">＋</button>
+          </div>
           <div class="hint" id="bandHint"></div>
         </div>
         <div class="field">
           <label for="lifeUnits">団体生命共済の口数</label>
-          <input type="number" id="lifeUnits" value="10" min="0" max="30" oninput="recalc()">
+          <div class="stepper">
+            <button type="button" class="sbtn" id="lifeUnits_dn" onclick="bump('lifeUnits',-1)" aria-label="団体生命共済の口数を1減らす">−</button>
+            <input type="number" id="lifeUnits" value="10" min="0" max="30" oninput="recalc()">
+            <button type="button" class="sbtn" id="lifeUnits_up" onclick="bump('lifeUnits',1)" aria-label="団体生命共済の口数を1増やす">＋</button>
+          </div>
           <div class="hint" id="lifeHint"></div>
         </div>
         <div class="field">
           <label for="basicUnits">医療共済 基本契約の口数</label>
-          <input type="number" id="basicUnits" value="5" min="0" max="10" oninput="recalc()">
+          <div class="stepper">
+            <button type="button" class="sbtn" id="basicUnits_dn" onclick="bump('basicUnits',-1)" aria-label="医療共済 基本契約の口数を1減らす">−</button>
+            <input type="number" id="basicUnits" value="5" min="0" max="10" oninput="recalc()">
+            <button type="button" class="sbtn" id="basicUnits_up" onclick="bump('basicUnits',1)" aria-label="医療共済 基本契約の口数を1増やす">＋</button>
+          </div>
           <div class="hint" id="basicHint"></div>
         </div>
         <div class="field">
-          <label>付ける特約</label>
+          <label>付ける特約<span style="font-weight:500;color:var(--muted);font-size:.75rem">（タップで切替）</span></label>
           <div id="riderBoxes"></div>
           <div class="hint">口数のある特約は基本契約と同口数で計算します。</div>
         </div>
@@ -356,7 +396,7 @@ footer{text-align:center;margin-top:26px;font-size:.77rem;color:var(--muted);lin
         <li>先進医療特約の通算限度額</li>
         <li>退院後療養特約の給付額</li>
         <li>長期入院特約の給付額・支払開始日数</li>
-        <li>生活習慣病入院特約の給付日額</li>
+        <li>生活習慣病特約の給付日額</li>
         <li>女性特定疾病特約の給付額と掛金レート（レート表にも入っていません）</li>
         <li>一般入院の1入院あたり・通算の支払限度日数</li>
       </ul>
@@ -408,7 +448,7 @@ const RIDERS = [
   {id:"discharge",name:"退院後療養特約",   rateKey:"discharge",units:true,  amount:null, note:"退院後の療養・通院"},
   {id:"long",     name:"長期入院特約",     rateKey:"long",     units:true,  amount:null, note:"入院が長期になったとき"},
   {id:"cancer",   name:"ガン診断特約",     rateKey:"cancer",   units:true,  amount:200000, note:"1口 20万円の一時金"},
-  {id:"lifestyle",name:"生活習慣病入院特約",rateKey:"lifestyle",units:true, amount:null, note:"糖尿病・心疾患・高血圧性疾患・脳血管疾患"}
+  {id:"lifestyle",name:"生活習慣病特約",rateKey:"lifestyle",units:true, amount:null, note:"糖尿病・心疾患・高血圧性疾患・脳血管疾患"}
 ];
 const BENEFIT = { deathPerUnit:1000000, dutyDeathPerUnit:2000000, hospPerUnit:1000, cancerHospPerUnit:2000 };
 
@@ -486,12 +526,30 @@ function highlightBand(age){
 }
 
 /* ========== 5. プラン ========== */
+const DEFAULT_ON = ["surgery","advanced","discharge","cancer"];
 function renderRiderBoxes(){
-  document.getElementById("riderBoxes").innerHTML = RIDERS.map(r =>
-    '<label class="check"><input type="checkbox" id="rd_' + r.id + '"'
-    + (["surgery","advanced","discharge","cancer"].includes(r.id) ? ' checked' : '')
-    + ' onchange="recalc()"><span>' + r.name + '</span><span class="r" id="rr_' + r.id + '">－</span></label>'
-  ).join("");
+  document.getElementById("riderBoxes").innerHTML = '<div class="tiles">' + RIDERS.map(r =>
+    '<label class="tile"><input type="checkbox" id="rd_' + r.id + '"'
+    + (DEFAULT_ON.includes(r.id) ? ' checked' : '') + ' onchange="recalc()">'
+    + '<span class="tin"><span class="tname">' + r.name + '</span>'
+    + '<span class="tmeta" id="rr_' + r.id + '">－</span>'
+    + '<span class="tmark" aria-hidden="true"></span></span></label>'
+  ).join("") + '</div>';
+}
+/* ステッパー。min/max を尊重し、両端でボタンを無効化する */
+function bump(id, delta){
+  const el = document.getElementById(id);
+  const lo = parseInt(el.min), hi = parseInt(el.max);
+  el.value = clamp((parseInt(el.value) || 0) + delta, lo, hi);
+  recalc();
+}
+function syncSteppers(){
+  ["age","lifeUnits","basicUnits"].forEach(id => {
+    const el = document.getElementById(id);
+    const v = clamp(parseInt(el.value) || 0, parseInt(el.min), parseInt(el.max));
+    document.getElementById(id + "_dn").disabled = v <= parseInt(el.min);
+    document.getElementById(id + "_up").disabled = v >= parseInt(el.max);
+  });
 }
 function planPremium(age, lifeUnits, basicUnits, on){
   const b = getBand(age);
@@ -526,8 +584,10 @@ function recalc(){
 
   RIDERS.forEach(r => {
     const u = r.units ? basicUnits : 1;
-    document.getElementById("rr_" + r.id).textContent = jp(riderRate(r, age)) + "円" + (r.units ? " ×" + u : "");
+    document.getElementById("rr_" + r.id).textContent =
+      r.units ? jp(riderRate(r, age)) + "円 × " + u + "口" : jp(riderRate(r, age)) + "円 / 口数なし";
   });
+  syncSteppers();
 
   document.getElementById("totalPrem").innerHTML  = jp(total) + '<span class="unit">円 / 月</span>';
   document.getElementById("yearPrem").textContent = jp(total * 12) + "円";

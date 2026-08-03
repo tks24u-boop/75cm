@@ -95,12 +95,27 @@ input:focus-visible,select:focus-visible,button:focus-visible{outline:none;borde
 .radios label:hover{border-color:var(--sky);background:var(--sky-soft)}
 .radios input{width:16px;height:16px;flex:none;accent-color:var(--sky)}
 .radios input:checked + b{color:var(--sky)}
-.check{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border:1px solid var(--line);
-  border-radius:9px;margin-bottom:8px;cursor:pointer;background:#FBFCFD}
-.check:hover{border-color:var(--sky);background:var(--sky-soft)}
-.check input{margin-top:4px;width:17px;height:17px;flex:none;accent-color:var(--sky)}
-.check span{font-size:.83rem;font-weight:500}
-.check em{display:block;font-style:normal;font-size:.73rem;color:var(--muted)}
+/* ---- 四角いトグルタイル（特約・希望額の選択） ---- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tiles.t1{grid-template-columns:1fr}
+.tile{display:block;position:relative;margin:0;cursor:pointer}
+.tile input{position:absolute;opacity:0;width:1px;height:1px}
+.tile .tin{display:block;position:relative;border:1.5px solid var(--line-strong);
+  border-radius:11px;padding:9px 30px 8px 11px;background:#FBFCFD;min-height:56px;
+  transition:background .15s,border-color .15s}
+.tile:hover .tin{border-color:var(--sky);background:var(--sky-soft)}
+.tile input:checked + .tin{border-color:var(--sky);background:var(--sky-soft);box-shadow:inset 0 0 0 1px var(--sky)}
+.tile input:focus-visible + .tin{outline:3px solid rgba(42,111,176,.35);outline-offset:2px}
+.tile .tname{display:block;font-size:.84rem;font-weight:700;color:#4A5866;line-height:1.35}
+.tile input:checked + .tin .tname{color:var(--ink)}
+.tile .tmeta{display:block;font-size:.72rem;color:var(--muted);margin-top:2px}
+.tile .tmark{position:absolute;top:9px;right:10px;width:18px;height:18px;border-radius:5px;
+  border:1.5px solid var(--line-strong);background:#fff}
+.tile input[type=radio] + .tin .tmark{border-radius:50%}
+.tile input:checked + .tin .tmark{background:var(--sky);border-color:var(--sky)}
+.tile input:checked + .tin .tmark::after{content:"";position:absolute;left:5px;top:1px;
+  width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+@media(max-width:420px){.tiles{grid-template-columns:1fr}.tile .tin{min-height:0}}
 .minibtn{
   width:100%;margin-top:6px;padding:8px;border:1px dashed var(--sky);background:var(--sky-soft);
   color:var(--ink);border-radius:8px;font-family:inherit;font-size:.8rem;font-weight:700;cursor:pointer;
@@ -450,30 +465,39 @@ footer{text-align:center;margin-top:28px;font-size:.77rem;color:var(--muted);lin
         <fieldset>
           <legend>医療の希望</legend>
           <div class="field">
-            <label for="dayAmount">希望入院日額（一般）</label>
-            <select id="dayAmount" onchange="calculate()">
-              <option value="3000">3,000円</option>
-              <option value="5000" selected>5,000円（推奨）</option>
-              <option value="7000">7,000円</option>
-              <option value="10000">10,000円</option>
-            </select>
+            <label>希望入院日額（一般）</label>
+            <div class="tiles">
+              <label class="tile"><input type="radio" name="dayAmount" value="3000" onchange="calculate()">
+                <span class="tin"><span class="tname">3,000円</span><span class="tmeta">基本 3口</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="dayAmount" value="5000" checked onchange="calculate()">
+                <span class="tin"><span class="tname">5,000円</span><span class="tmeta">基本 5口・推奨</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="dayAmount" value="7000" onchange="calculate()">
+                <span class="tin"><span class="tname">7,000円</span><span class="tmeta">基本 7口</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="dayAmount" value="10000" onchange="calculate()">
+                <span class="tin"><span class="tname">10,000円</span><span class="tmeta">基本 10口</span><span class="tmark" aria-hidden="true"></span></span></label>
+            </div>
           </div>
           <div class="field">
-            <label for="cancerHope">ガン診断一時金</label>
-            <select id="cancerHope" onchange="calculate()">
-              <option value="0">付けない</option>
-              <option value="1000000" selected>100万円</option>
-              <option value="2000000">200万円</option>
-            </select>
+            <label>ガン診断一時金</label>
+            <div class="tiles">
+              <label class="tile"><input type="radio" name="cancerHope" value="0" onchange="calculate()">
+                <span class="tin"><span class="tname">付けない</span><span class="tmeta">－</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="cancerHope" value="1000000" checked onchange="calculate()">
+                <span class="tin"><span class="tname">100万円</span><span class="tmeta">5口</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="cancerHope" value="2000000" onchange="calculate()">
+                <span class="tin"><span class="tname">200万円</span><span class="tmeta">10口</span><span class="tmark" aria-hidden="true"></span></span></label>
+            </div>
+            <div class="hint">特約は基本口数以内です。基本口数より多い口数は自動で切り下げます。</div>
           </div>
-          <label class="check" for="optLong">
-            <input type="checkbox" id="optLong" onchange="calculate()">
-            <span>長期入院特約<em>基本口数と同数で加算</em></span>
-          </label>
-          <label class="check" for="optLifestyle">
-            <input type="checkbox" id="optLifestyle" onchange="calculate()">
-            <span>生活習慣病入院特約<em>基本口数と同数で加算</em></span>
-          </label>
+          <div class="field">
+            <label>追加する特約<span style="font-weight:500;color:var(--muted);font-size:.75rem">（タップで切替）</span></label>
+            <div class="tiles">
+              <label class="tile"><input type="checkbox" id="optLong" onchange="calculate()">
+                <span class="tin"><span class="tname">長期入院特約</span><span class="tmeta">基本口数と同数</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="checkbox" id="optLifestyle" onchange="calculate()">
+                <span class="tin"><span class="tname">生活習慣病特約</span><span class="tmeta">基本口数と同数</span><span class="tmark" aria-hidden="true"></span></span></label>
+            </div>
+          </div>
         </fieldset>
       </div>
     </div>
@@ -992,8 +1016,8 @@ function calculate(){
   const loan       = nonNeg("loan");
   const savings    = nonNeg("savings");
   const loanMonthly= nonNeg("loanMonthly");
-  const dayAmount  = parseInt(document.getElementById("dayAmount").value) || 5000;
-  const cancerHope = parseInt(document.getElementById("cancerHope").value) || 0;
+  const dayAmount  = parseInt(document.querySelector('input[name="dayAmount"]:checked').value) || 5000;
+  const cancerHope = parseInt(document.querySelector('input[name="cancerHope"]:checked').value) || 0;
   const useLong    = document.getElementById("optLong").checked;
   const useLife    = document.getElementById("optLifestyle").checked;
   const dansin     = document.querySelector('input[name="dansin"]:checked').value === "yes";
