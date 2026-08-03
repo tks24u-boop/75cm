@@ -117,6 +117,13 @@ input:focus-visible,button:focus-visible{outline:none;border-color:var(--sky);bo
 footer{text-align:center;margin-top:26px;font-size:.77rem;color:var(--muted);line-height:1.8}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
+/* 狭い画面：見出しの補足が長いと本文が潰れるので下に回す */
+@media(max-width:560px){
+  .card > h2{flex-wrap:wrap}
+  .card > h2 small{width:100%;margin-left:36px;text-align:left;margin-top:3px}
+  .sumrow{gap:6px 16px}
+}
+
 @media print{
   body{background:#fff;padding:0;font-size:9.4pt;line-height:1.5}
   .hbtns,.builder .ctrl{display:none!important}
