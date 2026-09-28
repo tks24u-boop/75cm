@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教職員共済 トリプルガード ライフプラン提案書（鹿児島対応）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --ink:#16283C; --ink-2:#2F4A66; --sky:#2A6FB0; --sky-soft:#E4EEF7;
+  --shu:#C4402A; --shu-soft:#FBEAE6;
+  --gain:#1F6B4A; --gain-soft:#E3F2EA;
+  --paper:#EEF2F6; --card:#FFFFFF; --line:#D9E1E9; --line-strong:#B9C6D2;
+  --text:#1C232A; --muted:#62707E;
+  --d-living:#2A6FB0; --d-edu:#5B8C5A; --d-loan:#C9822B; --d-save:#94A3B0; --d-dansin:#A8B3BD;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+  background:var(--paper); color:var(--text); line-height:1.7; font-size:16px;
+  padding:20px 16px 96px;
+}
+.container{max-width:1240px;margin:0 auto}
+
+/* ========== ヘッダー ========== */
+header{
+  background:linear-gradient(150deg,var(--ink) 0%,#204A73 55%,var(--sky) 130%);
+  color:#fff;padding:26px 30px;border-radius:var(--radius);margin-bottom:22px;
+  position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(22,40,60,.22);
+}
+header::after{content:"";position:absolute;right:-60px;top:-70px;width:280px;height:280px;border:1px solid rgba(255,255,255,.16);border-radius:50%}
+header .eyebrow{font-size:.72rem;letter-spacing:.22em;font-weight:700;color:rgba(255,255,255,.72);margin-bottom:8px}
+header h1{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:clamp(1.3rem,3.2vw,1.9rem);line-height:1.35}
+header p{font-size:.9rem;opacity:.86;margin-top:8px;max-width:58ch}
+.printbtn{
+  margin-top:16px;display:inline-flex;align-items:center;gap:8px;
+  background:#fff;color:var(--ink);border:0;border-radius:9px;
+  padding:9px 18px;font-family:inherit;font-size:.87rem;font-weight:700;cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+}
+.printbtn:hover{background:#EAF1F8}
+.printbtn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.hbtns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.hbtns .printbtn{margin-top:16px;text-decoration:none}
+.printbtn.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.45);box-shadow:none}
+.printbtn.ghost:hover{background:rgba(255,255,255,.22)}
+
+/* ========== レイアウト ========== */
+.grid{display:grid;grid-template-columns:370px 1fr;gap:22px;align-items:start}
+@media(max-width:1000px){.grid{grid-template-columns:1fr}}
+.col-input{position:sticky;top:16px}
+@media(max-width:1000px){.col-input{position:static}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(22,40,60,.06)}
+.card > h2{
+  font-family:"Zen Old Mincho",serif;font-weight:700;font-size:1.06rem;color:var(--ink);
+  display:flex;align-items:center;gap:10px;padding-bottom:12px;margin-bottom:18px;border-bottom:2px solid var(--line);
+}
+.card > h2 .step{flex:none;width:26px;height:26px;border-radius:7px;background:var(--ink);color:#fff;
+  font-family:"IBM Plex Mono",monospace;font-size:.8rem;font-weight:600;display:grid;place-items:center}
+.card > h2 small{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:auto;text-align:right}
+.card.accent{border:2px solid var(--gain)}
+.card.accent > h2{color:var(--gain);border-bottom-color:var(--gain-soft)}
+.card.accent > h2 .step{background:var(--gain)}
+
+/* ========== 入力 ========== */
+fieldset{border:0;margin-bottom:20px}
+fieldset:last-of-type{margin-bottom:0}
+legend{font-size:.73rem;font-weight:700;letter-spacing:.14em;color:var(--sky);
+  padding-bottom:6px;margin-bottom:10px;width:100%;border-bottom:1px dashed var(--line-strong)}
+.field{margin-bottom:14px}
+.field:last-child{margin-bottom:0}
+label{display:block;font-size:.83rem;font-weight:700;margin-bottom:5px;color:#3B4956}
+input[type=number],select{
+  width:100%;padding:10px 12px;border:1px solid var(--line-strong);border-radius:9px;
+  font-family:"IBM Plex Mono","Zen Kaku Gothic New",monospace;font-size:1rem;font-weight:500;
+  color:var(--text);background:#fff;text-align:right;
+}
+select{font-family:"Zen Kaku Gothic New",sans-serif;text-align:left}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(42,111,176,.22)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.conv{display:block;text-align:right;margin-top:4px;font-family:"IBM Plex Mono",monospace;
+  font-size:.78rem;color:var(--sky);font-weight:600;min-height:1.1em}
+.hint{font-size:.75rem;color:var(--muted);margin-top:4px;line-height:1.55}
+.radios{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+.radios label{
+  display:flex;align-items:center;gap:7px;margin:0;padding:9px 10px;font-size:.82rem;
+  border:1px solid var(--line-strong);border-radius:9px;cursor:pointer;background:#FBFCFD;font-weight:500;
+}
+.radios label:hover{border-color:var(--sky);background:var(--sky-soft)}
+.radios input{width:16px;height:16px;flex:none;accent-color:var(--sky)}
+.radios input:checked + b{color:var(--sky)}
+/* ---- 四角いトグルタイル（特約・希望額の選択） ---- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tiles.t1{grid-template-columns:1fr}
+.tile{display:block;position:relative;margin:0;cursor:pointer}
+.tile input{position:absolute;opacity:0;width:1px;height:1px}
+.tile .tin{display:block;position:relative;border:1.5px solid var(--line-strong);
+  border-radius:11px;padding:9px 30px 8px 11px;background:#FBFCFD;min-height:56px;
+  transition:background .15s,border-color .15s}
+.tile:hover .tin{border-color:var(--sky);background:var(--sky-soft)}
+.tile input:checked + .tin{border-color:var(--sky);background:var(--sky-soft);box-shadow:inset 0 0 0 1px var(--sky)}
+.tile input:focus-visible + .tin{outline:3px solid rgba(42,111,176,.35);outline-offset:2px}
+.tile .tname{display:block;font-size:.84rem;font-weight:700;color:#4A5866;line-height:1.35}
+.tile input:checked + .tin .tname{color:var(--ink)}
+.tile .tmeta{display:block;font-size:.72rem;color:var(--muted);margin-top:2px}
+.tile .tmark{position:absolute;top:9px;right:10px;width:18px;height:18px;border-radius:5px;
+  border:1.5px solid var(--line-strong);background:#fff}
+.tile input[type=radio] + .tin .tmark{border-radius:50%}
+.tile input:checked + .tin .tmark{background:var(--sky);border-color:var(--sky)}
+.tile input:checked + .tin .tmark::after{content:"";position:absolute;left:5px;top:1px;
+  width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+@media(max-width:420px){.tiles{grid-template-columns:1fr}.tile .tin{min-height:0}}
+.minibtn{
+  width:100%;margin-top:6px;padding:8px;border:1px dashed var(--sky);background:var(--sky-soft);
+  color:var(--ink);border-radius:8px;font-family:inherit;font-size:.8rem;font-weight:700;cursor:pointer;
+}
+.minibtn:hover{background:#D3E5F4}
+
+/* ========== 数値表示 ========== */
+.hero{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:#FAFCFE}
+.cap{font-size:.79rem;font-weight:700;color:var(--muted);letter-spacing:.03em}
+.amount{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:clamp(1.9rem,5vw,2.9rem);
+  line-height:1.15;color:var(--ink);letter-spacing:-.02em;margin-top:2px}
+.amount .unit{font-size:.44em;margin-left:.14em;color:var(--ink-2)}
+.underline{display:block;width:100%;max-width:300px;height:9px;margin-top:-2px}
+.exact{font-family:"IBM Plex Mono",monospace;font-size:.83rem;color:var(--muted);margin-top:6px}
+
+.stack{display:flex;width:100%;height:34px;border-radius:7px;overflow:hidden;margin-top:14px;background:#E8EDF2}
+.stack > div{transition:width .28s ease;min-width:0;display:grid;place-items:center;color:#fff;
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:11px}
+.legend span{display:flex;align-items:center;gap:6px;font-size:.79rem;color:#3B4956}
+.legend i{width:11px;height:11px;border-radius:3px;flex:none}
+.legend b{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--text)}
+.deduct{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:8px;
+  border-top:1px dashed var(--line-strong);font-size:.81rem;color:#3B4956}
+.deduct b{font-family:"IBM Plex Mono",monospace;color:var(--d-save)}
+.deduct.dansin b{color:var(--muted)}
+
+.units{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.units-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.units-top .k{font-size:.83rem;font-weight:700;color:#3B4956}
+.units-top .v{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:1.85rem;color:var(--shu);line-height:1.1}
+.units-top .v small{font-size:.42em;color:var(--muted);margin-left:3px}
+.gaugebar{height:12px;border-radius:6px;background:#E4EAF0;margin-top:9px;overflow:hidden;display:flex}
+.gaugebar i{display:block;height:100%;transition:width .28s ease}
+.gaugecap{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);margin-top:5px;font-family:"IBM Plex Mono",monospace;gap:10px}
+
+/* ========== 保障内容パネル ========== */
+.bgroup{margin-bottom:18px}
+.bgroup:last-child{margin-bottom:0}
+.bgroup > h3{
+  font-size:.85rem;color:#fff;background:var(--gain);border-radius:7px 7px 0 0;
+  padding:7px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px;
+}
+.bgroup > h3 em{font-style:normal;font-weight:500;font-size:.75rem;opacity:.85;font-family:"IBM Plex Mono",monospace}
+.bgroup.med > h3{background:var(--sky)}
+.btable{border:1px solid var(--line);border-top:0;border-radius:0 0 7px 7px;overflow:hidden}
+.btable .r{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;
+  padding:9px 13px;border-bottom:1px solid #EDF1F5;font-size:.86rem}
+.btable .r:last-child{border-bottom:0}
+.btable .r:nth-child(even){background:#FAFCFD}
+.btable .r .n{color:#3B4956;font-weight:500}
+.btable .r .n em{display:block;font-style:normal;font-size:.73rem;color:var(--muted);font-weight:400}
+.btable .r .a{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:1rem;color:var(--ink);white-space:nowrap}
+.btable .r.key{background:var(--gain-soft)!important}
+.btable .r.key .a{font-size:1.3rem;color:var(--gain)}
+.btable .r.tbd .a{font-size:.72rem;color:#7A5A0E;font-weight:700;background:#FBEFD3;
+  border:1px solid #E5CE94;border-radius:999px;padding:2px 11px;line-height:1.5}
+.leverage{
+  margin-top:16px;padding:14px 16px;border-radius:11px;background:var(--ink);color:#fff;
+  display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;text-align:center;
+}
+.leverage .lk{font-size:.72rem;opacity:.72;font-weight:600}
+.leverage .lv{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:1.25rem;margin-top:2px}
+.leverage .arrow{font-size:1.3rem;opacity:.5}
+
+/* ========== 掛金 ========== */
+.prem-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.prem-amount{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:clamp(1.8rem,4.4vw,2.6rem);color:var(--ink);line-height:1.1}
+.prem-amount .unit{font-size:.4em;margin-left:.12em;color:var(--ink-2)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;
+  font-size:.77rem;font-weight:700;background:var(--sky-soft);color:var(--ink);border:1px solid rgba(42,111,176,.3)}
+.brow{display:grid;grid-template-columns:8.2em 1fr 5.4em;align-items:center;gap:10px;padding:5px 0;font-size:.81rem}
+.brow .bl{color:#3B4956;font-weight:500;display:flex;align-items:center;gap:7px}
+.brow .bl i{width:10px;height:10px;border-radius:3px;flex:none}
+.brow .bt{height:9px;border-radius:5px;background:#EDF1F5;overflow:hidden}
+.brow .bt i{display:block;height:100%;border-radius:5px;transition:width .28s ease}
+.brow .bv{text-align:right;font-family:"IBM Plex Mono",monospace;font-weight:600}
+.subtotal{display:grid;grid-template-columns:8.2em 1fr 5.4em;gap:10px;padding-top:9px;margin-top:7px;
+  border-top:1px solid var(--line);font-size:.84rem;font-weight:700;color:var(--ink)}
+.subtotal .bv{grid-column:3;text-align:right;font-family:"IBM Plex Mono",monospace}
+
+/* ========== 年金タイムライン ========== */
+.phases{display:grid;gap:10px}
+.phase{display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;
+  border:1px solid var(--line);border-radius:11px;padding:12px 15px;background:#FBFCFD}
+.phase .ph{width:34px;height:34px;border-radius:9px;background:var(--sky);color:#fff;flex:none;
+  display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:.85rem}
+.phase.drop{border-color:var(--shu);background:var(--shu-soft)}
+.phase.drop .ph{background:var(--shu)}
+.phase .pt{font-size:.83rem;font-weight:700;color:var(--ink)}
+.phase .pd{font-size:.75rem;color:var(--muted)}
+.phase .pv{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:1.1rem;color:var(--ink);white-space:nowrap;text-align:right}
+.phase .pv small{display:block;font-size:.6em;color:var(--muted);font-weight:500}
+
+/* ========== 注記 ========== */
+.note{background:#FDF7E7;border:1px solid #EBD9A8;border-left:4px solid #C68A15;padding:12px 15px;
+  border-radius:0 10px 10px 0;font-size:.81rem;margin-top:16px;color:#5C4A15}
+.note strong{color:#7A5E10}
+.alert{background:var(--shu-soft);border:1px solid rgba(196,64,42,.3);border-left:4px solid var(--shu);
+  padding:12px 15px;border-radius:0 10px 10px 0;font-size:.81rem;margin-top:12px;color:#7A2A1B}
+.good{background:var(--gain-soft);border:1px solid #B4D9C4;border-left:4px solid var(--gain);
+  padding:12px 15px;border-radius:0 10px 10px 0;font-size:.81rem;margin-top:12px;color:#144A33}
+.disclaimer{background:#fff;border:1px solid var(--line);border-top:5px solid var(--ink);
+  border-radius:4px 4px var(--radius) var(--radius);padding:20px 24px;font-size:.83rem;color:#3B4956;line-height:1.75}
+.disclaimer h3{font-family:"Zen Old Mincho",serif;font-size:.95rem;color:var(--ink);margin-bottom:8px}
+
+/* ========== 制度情報 ========== */
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.spec{grid-template-columns:1fr}}
+.spec > div{border:1px solid var(--line);border-radius:11px;padding:16px 18px;background:#FBFCFD}
+.spec h3{font-size:.9rem;color:var(--ink);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.spec dl{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:.84rem}
+.spec dt{color:var(--muted);font-weight:500;white-space:nowrap}
+.spec dd{font-weight:600;font-family:"IBM Plex Mono","Zen Kaku Gothic New",monospace}
+.spec p{font-size:.82rem;color:#3B4956;margin-top:10px}
+.pub{display:grid;gap:10px}
+.pub .item{display:grid;grid-template-columns:4.5em 1fr;gap:12px;align-items:start;font-size:.85rem}
+.pub .item b{background:var(--ink);color:#fff;border-radius:7px;text-align:center;font-size:.77rem;padding:3px 0;font-weight:700}
+.pub .concl{margin-top:6px;padding:11px 14px;background:var(--sky-soft);border-radius:9px;font-size:.84rem;font-weight:700;color:var(--ink)}
+
+/* ========== ステージ ========== */
+.legend-now{display:flex;align-items:center;gap:7px;font-size:.77rem;color:var(--muted);margin-bottom:11px}
+.legend-now i{width:14px;height:14px;border-radius:4px;background:var(--shu-soft);border:2px solid var(--shu);flex:none}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px}
+table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:820px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--ink);color:#fff;font-weight:700;font-size:.77rem;white-space:nowrap}
+tbody tr:nth-child(even){background:#F8FAFC}
+tbody tr.now{background:var(--shu-soft)!important;box-shadow:inset 4px 0 0 var(--shu)}
+tbody tr.now td{font-weight:600}
+td .age{font-family:"IBM Plex Mono",monospace;white-space:nowrap;color:var(--muted)}
+.nowtag{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;background:var(--shu);
+  color:#fff;font-size:.67rem;font-weight:700;vertical-align:middle}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.73rem;font-weight:700;white-space:nowrap}
+.badge-high{background:#DDF0E1;color:#1E5B2C;border:1px solid #A9D6B4}
+.badge-mid{background:#FBEFD3;color:#7A5A0E;border:1px solid #E5CE94}
+.badge-low{background:#F7DFDC;color:#8A2E1F;border:1px solid #E3B4AC}
+.stagecards{display:none;gap:11px}
+@media(max-width:860px){.tablewrap{display:none}.stagecards{display:grid}}
+.scard{border:1px solid var(--line);border-radius:11px;padding:14px 16px;background:#FBFCFD}
+.scard.now{border:2px solid var(--shu);background:var(--shu-soft)}
+.scard .sh{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.scard .sh b{font-size:.94rem;color:var(--ink)}
+.scard .sh .age{font-family:"IBM Plex Mono",monospace;font-size:.79rem;color:var(--muted)}
+.scard dl{display:grid;grid-template-columns:6.5em 1fr;gap:5px 10px;font-size:.81rem;margin-top:8px}
+.scard dt{color:var(--muted);font-weight:500}
+
+/* ========== グラフ ========== */
+.chartwrap{position:relative;height:320px}
+@media(max-width:600px){.chartwrap{height:260px}}
+.chartnote{font-size:.78rem;color:var(--muted);margin-top:12px;display:flex;flex-wrap:wrap;gap:6px 18px}
+.chartnote i.line-shu{width:16px;height:0;border-top:2px dashed var(--shu);flex:none}
+.chartnote i.sw{width:14px;height:10px;border-radius:3px;background:#EAF0F6;border:1px solid var(--line-strong);flex:none}
+.chartnote span{display:flex;align-items:center;gap:6px}
+
+/* ========== モバイル固定バー ========== */
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;
+  background:rgba(22,40,60,.97);backdrop-filter:blur(8px);color:#fff;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px rgba(0,0,0,.2)}
+@media(max-width:1000px){.stickybar{display:flex;gap:12px}}
+.stickybar div{flex:1;min-width:0}
+.stickybar .k{font-size:.66rem;opacity:.7;font-weight:500}
+.stickybar .v{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:1.05rem;white-space:nowrap}
+footer{text-align:center;margin-top:28px;font-size:.77rem;color:var(--muted);line-height:1.8}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ========== 狭い画面の調整 ==========
+   金額は nowrap なので、横並びのままだと項目名だけが潰れて不自然に折り返す。
+   一定幅より狭い場合は縦積みにして、項目名に全幅を渡す。 */
+@media(max-width:560px){
+  .card > h2{flex-wrap:wrap}
+  .card > h2 small{width:100%;margin-left:36px;text-align:left;margin-top:3px}
+  .btable .r{grid-template-columns:1fr;gap:3px}
+  .btable .r .a{justify-self:end}
+  .btable .r.key .a{font-size:1.35rem}
+  .leverage{grid-template-columns:1fr;gap:4px;text-align:left}
+  .leverage .arrow{transform:rotate(90deg);justify-self:start;line-height:1}
+  .brow{grid-template-columns:7em 1fr 4.6em;gap:8px}
+  .subtotal{grid-template-columns:7em 1fr 4.6em;gap:8px}
+}
+
+/* =========================================================
+   A4 印刷（表裏2ページ）— 画面用UIは隠し、専用レイアウトを出す
+   ========================================================= */
+.printdoc{display:none}
+@page{size:A4 portrait;margin:11mm 12mm}
+@media print{
+  html,body{background:#fff!important;padding:0!important;margin:0!important;
+    font-size:9.6pt;line-height:1.5;color:#000}
+  .container,.stickybar,header,.card,.disclaimer,footer{display:none!important}
+  .printdoc{display:block!important}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+}
+.p-page{width:186mm;min-height:266mm;position:relative;page-break-after:always;break-after:page}
+.p-page:last-child{page-break-after:auto;break-after:auto}
+.p-head{display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2.4pt solid var(--ink);padding-bottom:2.5mm;margin-bottom:4mm}
+.p-head h1{font-family:"Zen Old Mincho",serif;font-size:13.2pt;color:var(--ink);line-height:1.3}
+.p-head .sub{font-size:7.8pt;color:#555;margin-top:.6mm}
+.p-head .meta{font-size:7.2pt;text-align:right;color:#333;line-height:1.75;white-space:nowrap}
+.p-head .meta u{display:inline-block;min-width:26mm;border-bottom:.5pt solid #999;text-decoration:none}
+.p-sec{margin-bottom:2.4mm;break-inside:avoid}
+.p-sec > h2{font-size:8.6pt;color:#fff;background:var(--ink);padding:.9mm 2.5mm;border-radius:1.2mm;
+  display:flex;justify-content:space-between;align-items:center}
+.p-sec > h2 em{font-style:normal;font-weight:400;font-size:7pt;opacity:.8}
+.p-sec.gain > h2{background:var(--gain)}
+.p-body{border:.5pt solid #BBB;border-top:0;padding:1.7mm 2.5mm;border-radius:0 0 1.2mm 1.2mm}
+.p-2col{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.p-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm}
+.p-kv{display:grid;grid-template-columns:auto 1fr;gap:.5mm 3mm;font-size:7.9pt}
+.p-kv dt{color:#555}
+.p-kv dd{font-weight:700;font-family:"IBM Plex Mono",monospace;text-align:right}
+.p-big{text-align:center;padding:.8mm 0}
+.p-big .k{font-size:7.8pt;color:#555;font-weight:700}
+.p-big .v{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:17pt;color:var(--ink);line-height:1.1}
+.p-big .v .u{font-size:.45em;margin-left:.1em}
+.p-big.gain .v{color:var(--gain)}
+.p-big.shu .v{color:var(--shu)}
+.p-big .s{font-size:7.4pt;color:#666;font-family:"IBM Plex Mono",monospace}
+.p-tbl{width:100%;border-collapse:collapse;font-size:7.4pt;min-width:0}
+.p-tbl th,.p-tbl td{border:.5pt solid #BBB;padding:.65mm 1.4mm;line-height:1.35;text-align:left;vertical-align:top}
+.p-tbl thead th{background:var(--ink);color:#fff;font-size:6.9pt;font-weight:700}
+.p-tbl td.num{text-align:right;font-family:"IBM Plex Mono",monospace;font-weight:600;white-space:nowrap}
+.p-tbl tr.hi td{background:var(--gain-soft);font-weight:700}
+.p-tbl tr.now td{background:var(--shu-soft);font-weight:700}
+.p-tbl tr.sum td{background:#EDF1F5;font-weight:700}
+.p-stack{display:flex;height:6mm;border-radius:1mm;overflow:hidden;margin:1.5mm 0 1mm}
+.p-stack div{display:grid;place-items:center;color:#fff;font-size:7pt;font-weight:700;font-family:"IBM Plex Mono",monospace}
+.p-legend{display:flex;flex-wrap:wrap;gap:.6mm 3mm;font-size:7pt}
+.p-legend span{display:flex;align-items:center;gap:1.4mm}
+.p-legend i{width:2.6mm;height:2.6mm;border-radius:.6mm}
+.p-note{font-size:6.8pt;color:#444;line-height:1.42;margin-top:1mm}
+.p-warn{border:.5pt solid var(--shu);background:var(--shu-soft);color:#7A2A1B;
+  padding:1.2mm 2mm;border-radius:1.2mm;font-size:7.1pt;line-height:1.4;margin-top:1.2mm}
+.p-chart{height:38mm;position:relative}
+.p-foot{position:absolute;bottom:0;left:0;right:0;border-top:.5pt solid #BBB;padding-top:1mm;
+  font-size:6.9pt;color:#666;display:flex;justify-content:space-between;line-height:1.5}
+.p-fill{border-bottom:.5pt solid #999;display:inline-block;min-width:20mm}
+</style>
+</head>
+<body>
+
+<!-- ==================== 画面表示 ==================== -->
+<div class="container">
+
+  <header>
+    <div class="eyebrow">公立学校共済組合 鹿児島支部 対応</div>
+    <h1>教職員共済 トリプルガード<br>ライフプラン提案書</h1>
+    <p>公的保障で足りない分はいくらか。その設計で実際にいくら受け取れるか。毎月いくら払うか。この3つをA4表裏で持ち帰れる形にまとめます。</p>
+    <div class="hbtns">
+      <button class="printbtn" onclick="doPrint()">A4表裏で印刷 / PDF保存</button>
+      <a class="printbtn ghost" href="tripleguard-product.html">商品内容ガイドを見る →</a>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- ---------- 入力 ---------- -->
+    <div class="col-input">
+      <div class="card">
+        <h2><span class="step">1</span>加入者情報</h2>
+
+        <fieldset>
+          <legend>本人・家族</legend>
+          <div class="field">
+            <label for="age">本人年齢（満年齢）</label>
+            <input type="number" id="age" value="40" min="20" max="90" oninput="calculate()">
+            <span class="conv" id="ageBandConv"></span>
+          </div>
+          <div class="field">
+            <label for="income">本人の年収（賞与込・概算）</label>
+            <input type="number" id="income" value="6000000" step="100000" oninput="calculate()">
+            <span class="conv" data-conv="income"></span>
+            <div class="hint">遺族厚生（共済）年金の概算に使います</div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="spouseAge">配偶者年齢</label>
+              <input type="number" id="spouseAge" value="38" min="0" max="90" oninput="calculate()">
+              <div class="hint">なしは0</div>
+            </div>
+            <div class="field">
+              <label for="kids">子供人数</label>
+              <input type="number" id="kids" value="1" min="0" max="5" oninput="calculate()">
+            </div>
+          </div>
+          <div class="field">
+            <label for="youngest">末子の年齢</label>
+            <input type="number" id="youngest" value="5" min="0" max="30" oninput="calculate()">
+            <div class="hint">遺族基礎年金が切れる時期の判定に使います</div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>遺族に必要なお金</legend>
+          <div class="field">
+            <label for="living">月間必要生活費</label>
+            <input type="number" id="living" value="250000" step="10000" oninput="calculate()">
+            <span class="conv" data-conv="living"></span>
+          </div>
+          <div class="field">
+            <label for="publicPension">公的遺族年金等の月額見込み</label>
+            <input type="number" id="publicPension" value="150000" step="10000" oninput="calculate()">
+            <span class="conv" data-conv="publicPension"></span>
+            <button class="minibtn" type="button" onclick="applyPensionEstimate()">保障年数で平均した概算を入れる</button>
+            <div class="hint">下の「4. 公的年金はいつ減るか」の各時期の金額を、必要保障年数のあいだで加重平均した額が入ります。最終的にはねんきん定期便・共済の試算で確認してください</div>
+          </div>
+          <div class="field">
+            <label for="years">必要保障年数</label>
+            <input type="number" id="years" value="15" min="1" max="40" oninput="calculate()">
+            <button class="minibtn" type="button" onclick="applyYearsEstimate()">末子が22歳になるまでを入れる</button>
+          </div>
+          <div class="field">
+            <label for="education">教育費残額</label>
+            <input type="number" id="education" value="5000000" step="100000" oninput="calculate()">
+            <span class="conv" data-conv="education"></span>
+          </div>
+          <div class="field">
+            <label for="savings">貯蓄・他の死亡保障</label>
+            <input type="number" id="savings" value="8000000" step="100000" oninput="calculate()">
+            <span class="conv" data-conv="savings"></span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>住宅ローン</legend>
+          <div class="field">
+            <label for="loan">ローン残高</label>
+            <input type="number" id="loan" value="15000000" step="100000" oninput="calculate()">
+            <span class="conv" data-conv="loan"></span>
+          </div>
+          <div class="field">
+            <label>団体信用生命保険（団信）</label>
+            <div class="radios">
+              <label><input type="radio" name="dansin" value="yes" checked onchange="calculate()"><b>加入している</b></label>
+              <label><input type="radio" name="dansin" value="no" onchange="calculate()"><b>入っていない</b></label>
+            </div>
+            <div class="hint" id="dansinHint"></div>
+          </div>
+          <div class="field">
+            <label for="loanMonthly">毎月のローン返済額</label>
+            <input type="number" id="loanMonthly" value="80000" step="5000" oninput="calculate()">
+            <div class="hint">団信ありなら、この分は遺族の生活費から減らせます</div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>医療の希望</legend>
+          <div class="field">
+            <label>希望入院日額（一般）</label>
+            <div class="tiles">
+              <label class="tile"><input type="radio" name="dayAmount" value="3000" onchange="calculate()">
+                <span class="tin"><span class="tname">3,000円</span><span class="tmeta">基本 3口</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="dayAmount" value="5000" checked onchange="calculate()">
+                <span class="tin"><span class="tname">5,000円</span><span class="tmeta">基本 5口・推奨</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="dayAmount" value="7000" onchange="calculate()">
+                <span class="tin"><span class="tname">7,000円</span><span class="tmeta">基本 7口</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="dayAmount" value="10000" onchange="calculate()">
+                <span class="tin"><span class="tname">10,000円</span><span class="tmeta">基本 10口</span><span class="tmark" aria-hidden="true"></span></span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>ガン診断一時金</label>
+            <div class="tiles">
+              <label class="tile"><input type="radio" name="cancerHope" value="0" onchange="calculate()">
+                <span class="tin"><span class="tname">付けない</span><span class="tmeta">－</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="cancerHope" value="1000000" checked onchange="calculate()">
+                <span class="tin"><span class="tname">100万円</span><span class="tmeta">5口</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="radio" name="cancerHope" value="2000000" onchange="calculate()">
+                <span class="tin"><span class="tname">200万円</span><span class="tmeta">10口</span><span class="tmark" aria-hidden="true"></span></span></label>
+            </div>
+            <div class="hint">特約は基本口数以内です。基本口数より多い口数は自動で切り下げます。</div>
+          </div>
+          <div class="field">
+            <label>追加する特約<span style="font-weight:500;color:var(--muted);font-size:.75rem">（タップで切替）</span></label>
+            <div class="tiles">
+              <label class="tile"><input type="checkbox" id="optLong" onchange="calculate()">
+                <span class="tin"><span class="tname">長期入院特約</span><span class="tmeta">基本口数と同数</span><span class="tmark" aria-hidden="true"></span></span></label>
+              <label class="tile"><input type="checkbox" id="optLifestyle" onchange="calculate()">
+                <span class="tin"><span class="tname">生活習慣病特約</span><span class="tmeta">基本口数と同数</span><span class="tmark" aria-hidden="true"></span></span></label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <!-- ---------- 結果 ---------- -->
+    <div>
+
+      <!-- 必要保障額 -->
+      <div class="card">
+        <h2><span class="step">2</span>いくら足りないか<small>公的保障を差し引いた不足額</small></h2>
+        <div class="hero">
+          <div class="cap">上乗せが必要な死亡保障額</div>
+          <div class="amount" id="needDeathMan">－</div>
+          <svg class="underline" viewBox="0 0 300 9" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M2,6 C60,2.5 110,8 158,4.5 C205,1.5 252,7 298,3.5" fill="none" stroke="#C4402A" stroke-width="2.6" stroke-linecap="round" opacity=".85"/>
+          </svg>
+          <div class="exact" id="needDeathYen">－</div>
+          <div class="stack" id="stack" role="img" aria-label="必要額の内訳"></div>
+          <div class="legend" id="stackLegend"></div>
+          <div id="deducts"></div>
+        </div>
+
+        <div class="units">
+          <div class="units-top">
+            <span class="k">団体生命共済の推奨口数</span>
+            <span class="v"><span id="recLifeUnits">－</span><small>口</small></span>
+          </div>
+          <div class="gaugebar"><i id="unitFill" style="width:0%;background:var(--shu)"></i></div>
+          <div class="gaugecap"><span>1口＝死亡保障100万円</span><span id="unitCap">－</span></div>
+          <div id="unitAlert"></div>
+        </div>
+        <div id="dansinNote"></div>
+      </div>
+
+      <!-- ★ 保障内容 -->
+      <div class="card accent">
+        <h2><span class="step">◎</span>この設計で受け取れる保障<small id="benefitSub">－</small></h2>
+
+        <div class="bgroup">
+          <h3>死亡・障害（団体生命共済）<em id="lifeUnitLabel">－</em></h3>
+          <div class="btable" id="lifeBenefits"></div>
+        </div>
+
+        <div class="bgroup med">
+          <h3>入院・手術（医療共済）<em id="medUnitLabel">－</em></h3>
+          <div class="btable" id="medBenefits"></div>
+        </div>
+
+        <div class="leverage">
+          <div><div class="lk">毎月の掛金</div><div class="lv" id="levPrem">－</div></div>
+          <div class="arrow">→</div>
+          <div><div class="lk">万一のときの死亡保障</div><div class="lv" id="levDeath">－</div></div>
+        </div>
+        <div class="note" id="benefitNote"></div>
+      </div>
+
+      <!-- 掛金 -->
+      <div class="card">
+        <h2><span class="step">3</span>毎月の掛金</h2>
+        <div class="prem-head">
+          <div>
+            <div class="cap">推奨口数＋標準的な医療付き（本人）</div>
+            <div class="prem-amount" id="monthlyPrem">－</div>
+          </div>
+          <span class="chip" id="bandChip">－</span>
+        </div>
+        <div id="premBreakdown" style="margin-top:16px"></div>
+        <div class="note"><strong>掛金が変わるタイミング</strong><br>毎年8月1日時点の年齢群団で決まります。特約は65歳まで同一レートです。</div>
+        <div id="premNote"></div>
+      </div>
+
+      <!-- 公的年金タイムライン -->
+      <div class="card">
+        <h2><span class="step">4</span>公的年金はいつ減るか<small>概算・2026年度額</small></h2>
+        <div class="phases" id="phases"></div>
+        <div id="pensionAlert"></div>
+        <div class="note">
+          <strong>概算の前提</strong><br>
+          遺族基礎年金は2026年度額（年847,300円＋子の加算 第1・2子 各243,800円、第3子以降 各81,300円）。
+          遺族厚生（共済）年金は「年収÷12×5.481/1000×加入月数（最低300月）×3/4」で試算しています。
+          中高齢寡婦加算は年635,500円で、配偶者が妻の場合の目安です。実額は必ず共済の試算でご確認ください。
+        </div>
+      </div>
+
+      <!-- グラフ -->
+      <div class="card">
+        <h2><span class="step">5</span>掛金は年齢群団で階段状に上がる</h2>
+        <div class="chartwrap"><canvas id="premChart"></canvas></div>
+        <div class="chartnote">
+          <span><i class="line-shu"></i>あなたの現在地</span>
+          <span><i class="sw"></i>群団の区切り（41・66・71・76・81・86歳）</span>
+        </div>
+      </div>
+
+      <!-- ステージ -->
+      <div class="card">
+        <h2><span class="step">6</span>ライフステージ別の焦点</h2>
+        <div class="legend-now"><i></i>朱色の行が現在のステージです</div>
+        <div class="tablewrap"><div id="stageTable"></div></div>
+        <div class="stagecards" id="stageCards"></div>
+      </div>
+
+      <!-- 制度情報 -->
+      <div class="card">
+        <h2><span class="step">7</span>制度の前提</h2>
+        <div class="spec">
+          <div>
+            <h3>団体生命共済（1口あたり）</h3>
+            <dl>
+              <dt>死亡・高度障害</dt><dd>100万円</dd>
+              <dt>公務・交通災害死亡</dt><dd>200万円</dd>
+              <dt>障害</dt><dd>5〜40万円</dd>
+            </dl>
+            <p>加入限度：65歳以下30口／66〜70歳10口／71歳以上5口</p>
+          </div>
+          <div>
+            <h3>医療共済（1口あたり）</h3>
+            <dl>
+              <dt>入院日額（一般）</dt><dd>1,000円</dd>
+              <dt>ガン入院日額</dt><dd>2,000円・無制限</dd>
+              <dt>ガン診断一時金</dt><dd>20万円</dd>
+            </dl>
+            <p>特約は基本口数以内。先進医療は口数の設定なし。</p>
+          </div>
+        </div>
+        <div class="pub" style="margin-top:18px">
+          <div class="item"><b>医療</b><span>公立学校共済組合の短期給付＋高額療養費＋附加給付で、実質負担が軽く済むケースが多い。</span></div>
+          <div class="item"><b>死亡</b><span>遺族厚生（共済）年金＋基礎年金（子供あり）が比較的厚い。公務災害はさらに手厚い。</span></div>
+          <div class="item"><b>鹿児島</b><span>支部と県教職員互助組合の追加厚生・弔慰金がある。</span></div>
+          <div class="concl">だからトリプルガードは、公的で足りない「上乗せ」に絞るのが合理的です。</div>
+        </div>
+        <div class="alert">
+          <strong>2028年4月の遺族厚生年金の見直し</strong><br>
+          遺族厚生年金は原則5年間の有期給付へ移行し、中高齢寡婦加算は段階的に縮小されます。
+          18歳年度末までの子を養育している間や、60歳以降に受給権が発生する場合などは対象外です。
+          子のいない世帯・子の独立後は、公的保障が細くなる方向であることを前提に設計してください。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <h3>注意・免責</h3>
+    本ツールは公式「共済のてびき」（2024年4月時点）および公式契約例をもとにした参考資料です。
+    公的年金額は2026年度の法定額にもとづく概算であり、実際の受給額は加入歴・報酬・家族構成により異なります。
+    掛金・制度は改定される可能性があり、加入の可否は健康状態によって決まります。
+    最終判断は必ず公式見積もりツール、または所属事業所・公立学校共済組合鹿児島支部でご確認ください。
+  </div>
+
+  <footer>トリプルガード ライフプラン提案書（鹿児島教職員向け）<br>制度データ固定・個人情報のみ可変／参考用</footer>
+</div>
+
+<div class="stickybar">
+  <div><div class="k">必要保障額</div><div class="v" id="sbNeed">－</div></div>
+  <div><div class="k">死亡保障</div><div class="v" id="sbCover">－</div></div>
+  <div><div class="k">月掛金</div><div class="v" id="sbPrem">－</div></div>
+</div>
+
+<!-- ==================== A4 印刷用（表裏2ページ） ==================== -->
+<div class="printdoc">
+
+  <!-- ========== 表面 ========== -->
+  <section class="p-page">
+    <div class="p-head">
+      <div>
+        <h1>教職員共済 トリプルガード ご提案書</h1>
+        <div class="sub">公立学校共済組合 鹿児島支部 対応／公的保障を差し引いた上乗せ設計</div>
+      </div>
+      <div class="meta">
+        お名前 <u>&nbsp;</u> 様<br>
+        作成日 <u id="pDate">&nbsp;</u><br>
+        担当者 <u>&nbsp;</u>
+      </div>
+    </div>
+
+    <div class="p-sec">
+      <h2>1. ご入力条件 <em>この条件で試算しています</em></h2>
+      <div class="p-body">
+        <div class="p-3col">
+          <dl class="p-kv" id="pCond1"></dl>
+          <dl class="p-kv" id="pCond2"></dl>
+          <dl class="p-kv" id="pCond3"></dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-sec">
+      <h2>2. 必要な死亡保障額 <em>公的保障で足りない分</em></h2>
+      <div class="p-body">
+        <div class="p-2col">
+          <div>
+            <div class="p-big shu">
+              <div class="k">上乗せが必要な額</div>
+              <div class="v" id="pNeed">－</div>
+              <div class="s" id="pNeedYen">－</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:7.8pt;color:#555;font-weight:700">必要額の内訳</div>
+            <div class="p-stack" id="pStack"></div>
+            <div class="p-legend" id="pLegend"></div>
+            <div class="p-note" id="pDeduct"></div>
+          </div>
+        </div>
+        <div class="p-warn" id="pNeedWarn" style="display:none"></div>
+      </div>
+    </div>
+
+    <div class="p-sec gain">
+      <h2>3. この設計で受け取れる保障 <em id="pBenefitSub">－</em></h2>
+      <div class="p-body">
+        <div class="p-2col">
+          <div>
+            <div style="font-size:7.8pt;color:#555;font-weight:700;margin-bottom:1mm">死亡・障害（団体生命共済）</div>
+            <table class="p-tbl" id="pLifeTbl"></table>
+          </div>
+          <div>
+            <div style="font-size:7.8pt;color:#555;font-weight:700;margin-bottom:1mm">入院・手術（医療共済）</div>
+            <table class="p-tbl" id="pMedTbl"></table>
+          </div>
+        </div>
+        <div class="p-note" id="pBenefitNote"></div>
+      </div>
+    </div>
+
+    <div class="p-sec">
+      <h2>4. 毎月の掛金 <em id="pBandLabel">－</em></h2>
+      <div class="p-body">
+        <div class="p-2col">
+          <div class="p-big">
+            <div class="k">月額掛金（合計）</div>
+            <div class="v" id="pPrem">－</div>
+            <div class="s" id="pPremYear">－</div>
+          </div>
+          <table class="p-tbl" id="pPremTbl"></table>
+        </div>
+        <div class="p-note">掛金は毎年8月1日時点の年齢群団で決まります。特約は65歳まで同一レートです。裏面のグラフで推移をご確認ください。</div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>トリプルガード ライフプラン提案書（参考資料）</span>
+      <span>1 / 2</span>
+    </div>
+  </section>
+
+  <!-- ========== 裏面 ========== -->
+  <section class="p-page">
+    <div class="p-head">
+      <div>
+        <h1>ご提案の背景資料</h1>
+        <div class="sub">公的年金の推移・掛金の推移・ライフステージ別の考え方</div>
+      </div>
+      <div class="meta">お名前 <u>&nbsp;</u> 様<br>作成日 <u id="pDate2">&nbsp;</u></div>
+    </div>
+
+    <div class="p-sec">
+      <h2>5. 公的年金はいつ、いくら減るか <em>2026年度額による概算</em></h2>
+      <div class="p-body">
+        <table class="p-tbl" id="pPhaseTbl"></table>
+        <div class="p-warn" id="pPensionWarn" style="display:none"></div>
+        <div class="p-note">
+          遺族基礎年金：年847,300円＋子の加算（第1・2子 各243,800円／第3子以降 各81,300円）。
+          遺族厚生（共済）年金：年収÷12×5.481/1000×加入月数（最低300月）×3/4で試算。
+          中高齢寡婦加算：年635,500円（配偶者が妻の場合の目安）。実額は共済の試算で必ずご確認ください。
+        </div>
+      </div>
+    </div>
+
+    <div class="p-sec">
+      <h2>6. 掛金は年齢群団で階段状に上がる <em>現在の設計を継続した場合</em></h2>
+      <div class="p-body">
+        <div class="p-chart"><canvas id="pChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="p-sec">
+      <h2>7. ライフステージ別の焦点 <em>網かけが現在のステージ</em></h2>
+      <div class="p-body" style="padding:0;border:0">
+        <table class="p-tbl" id="pStageTbl"></table>
+      </div>
+    </div>
+
+    <div class="p-sec">
+      <h2>8. 制度の前提と注意事項</h2>
+      <div class="p-body">
+        <div class="p-2col" style="font-size:7.1pt;line-height:1.42">
+          <div>
+            <b>団体生命共済（1口）</b><br>
+            死亡・高度障害 100万円／公務・交通災害死亡 200万円／障害 5〜40万円<br>
+            加入限度：65歳以下30口・66〜70歳10口・71歳以上5口<br><br>
+            <b>医療共済（1口）</b><br>
+            入院日額 1,000円／ガン入院日額 2,000円（無制限）／ガン診断一時金 20万円<br>
+            特約は基本口数以内。先進医療は口数の設定なし。
+          </div>
+          <div>
+            <b>2028年4月の遺族厚生年金の見直し</b><br>
+            原則5年間の有期給付へ移行し、中高齢寡婦加算は段階的に縮小されます。18歳年度末までの子を養育している間や、60歳以降に受給権が発生する場合などは対象外です。子のいない世帯・子の独立後は公的保障が細くなる方向です。<br><br>
+            <b>免責</b><br>
+            本書は公式「共済のてびき」（2024年4月時点）および公式契約例をもとにした参考資料です。掛金・制度は改定される可能性があり、加入の可否は健康状態によります。最終判断は公式見積もりツール、または所属事業所・公立学校共済組合鹿児島支部でご確認ください。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-sec">
+      <div class="p-body" style="border-top:.5pt solid #BBB;border-radius:1.2mm">
+        <div style="font-size:7.8pt;color:#555;font-weight:700;margin-bottom:2mm">メモ・次回までの確認事項</div>
+        <div style="font-size:7.4pt;line-height:2.05;color:#999">
+          <span class="p-fill" style="min-width:100%">&nbsp;</span><br>
+          <span class="p-fill" style="min-width:100%">&nbsp;</span><br>
+          <span class="p-fill" style="min-width:100%">&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-foot">
+      <span>トリプルガード ライフプラン提案書（参考資料）</span>
+      <span>2 / 2</span>
+    </div>
+  </section>
+</div>
+
+<script>
+/* =========================================================
+   ★編集ポイント：てびきの給付額をここに入れると表に反映されます
+   null のままなら「てびき参照」と表示します
+   ========================================================= */
+const BENEFIT = {
+  deathPerUnit:        1000000,  // 死亡・高度障害（1口）
+  dutyDeathPerUnit:    2000000,  // 公務・交通災害死亡（1口）
+  disabilityMinPerUnit:  50000,  // 障害 最小（1口）
+  disabilityMaxPerUnit: 400000,  // 障害 最大（1口）
+  hospPerUnit:            1000,  // 入院日額 一般（1口）
+  cancerHospPerUnit:      2000,  // ガン入院日額（1口・無制限）
+  cancerLumpPerUnit:    200000,  // ガン診断一時金（1口）
+  surgeryPerUnit:         null,  // 手術給付金（1口）… 例: 20000
+  dischargePerUnit:       null,  // 退院後通院等（1口）
+  longHospPerUnit:        null,  // 長期入院（1口）
+  lifestylePerUnit:       null,  // 生活習慣病入院日額（1口）
+  advancedLimit:          null   // 先進医療の給付限度額 … 例: 5000000
+};
+
+/* =========================================================
+   土台（変更なし）：レート表・年齢群団・加入限度
+   ========================================================= */
+const rates = {
+  life:      { "≤40": 81, "41-65": 327, "66-70": 1436, "71-75": 2422, "76-80": 3972, "81-85": 6261, "86-90": 9540 },
+  basic:     { "≤40": 131, "41-65": 277, "66-70": 756,  "71-75": 1121, "76-80": 1596, "81-85": 1899, "86-90": 2123 },
+  surgery:   { "≤65": 141, "66-70": 421, "71-75": 521,  "76-80": 686,  "81-85": 585,  "86-90": 29 },
+  discharge: { "≤65": 46,  "66-70": 179, "71-75": 272,  "76-80": 418,  "81-85": 547,  "86-90": 14 },
+  long:      { "≤65": 6,   "66-70": 28,  "71-75": 50,   "76-80": 84,   "81-85": 153,  "86-90": 2 },
+  cancer:    { "≤65": 225, "66-70": 951, "71-75": 1050, "76-80": 1120, "81-85": 1134, "86-90": 51 },
+  lifestyle: { "≤65": 44,  "66-70": 274, "71-75": 346,  "76-80": 416,  "81-85": 537,  "86-90": 5 },
+  advanced: 82
+};
+function getBand(age){
+  if (age <= 40) return "≤40";
+  if (age <= 65) return "41-65";
+  if (age <= 70) return "66-70";
+  if (age <= 75) return "71-75";
+  if (age <= 80) return "76-80";
+  if (age <= 85) return "81-85";
+  return "86-90";
+}
+function getSpecialBand(age){ return age <= 65 ? "≤65" : getBand(age); }
+function maxLifeUnits(age){ if (age <= 65) return 30; if (age <= 70) return 10; return 5; }
+const BANDS = [
+  {from:20,to:40,label:"40歳以下"},{from:41,to:65,label:"41-65歳"},{from:66,to:70,label:"66-70"},
+  {from:71,to:75,label:"71-75"},{from:76,to:80,label:"76-80"},{from:81,to:85,label:"81-85"},{from:86,to:90,label:"86-90"}
+];
+
+/* =========================================================
+   公的年金（2026年度・令和8年度の法定額）
+   ========================================================= */
+const PENSION = {
+  kiso: 847300,          // 遺族基礎年金 本体
+  child12: 243800,       // 子の加算 第1・2子
+  child3: 81300,         // 子の加算 第3子以降
+  chukorei: 635500,      // 中高齢寡婦加算
+  rate: 5.481/1000,      // 報酬比例の給付乗率
+  minMonths: 300         // 短期要件の最低みなし月数
+};
+function kisoAnnual(kids){
+  if (kids <= 0) return 0;
+  return PENSION.kiso + PENSION.child12 * Math.min(2, kids) + PENSION.child3 * Math.max(0, kids - 2);
+}
+function kouseiAnnual(income, age){
+  if (income <= 0) return 0;
+  const avg = income / 12;
+  const months = Math.max(PENSION.minMonths, Math.max(0, age - 22) * 12);
+  return Math.round(avg * PENSION.rate * months * 0.75);
+}
+
+/* =========================================================
+   表示ヘルパー
+   ========================================================= */
+const jp  = n => n.toLocaleString("ja-JP");
+const yen = n => jp(n) + "円";
+function manLabel(n){
+  if (n >= 100000000) return { num: jp(Math.round(n/1000000)/100), unit:"億円" };
+  return { num: jp(Math.round(n/10000)), unit:"万円" };
+}
+const manShort = n => { const m = manLabel(n); return m.num + m.unit; };
+function refreshConversions(){
+  document.querySelectorAll("[data-conv]").forEach(el=>{
+    const v = parseInt(document.getElementById(el.dataset.conv).value);
+    el.textContent = (!v || isNaN(v)) ? "" : "＝ " + manShort(v);
+  });
+  const a = parseInt(document.getElementById("age").value) || 40;
+  document.getElementById("ageBandConv").textContent = "年齢群団 " + getBand(a);
+}
+const val = id => parseInt(document.getElementById(id).value) || 0;
+const clamp = (n, lo, hi) => Math.min(hi, Math.max(lo, n));
+const nonNeg = id => Math.max(0, val(id));
+
+/* =========================================================
+   補助ボタン
+   ========================================================= */
+/* 保障年数のあいだの受給額を、フェーズの長さで加重平均して返す。
+   第1フェーズだけを見ると末子18歳以降の減額が反映されず、必要保障額を過小に見積もってしまう。 */
+function averagePensionMonthly(years){
+  const phases = buildPhases();
+  if (!phases.length) return 0;
+  let remain = years, sum = 0;
+  for (const p of phases){
+    if (remain <= 0) break;
+    const d = Math.min(remain, p.durY);
+    sum += p.monthly * d;
+    remain -= d;
+  }
+  if (remain > 0) sum += phases[phases.length - 1].monthly * remain;
+  return sum / years;
+}
+function applyPensionEstimate(){
+  const years = clamp(val("years") || 15, 1, 40);
+  document.getElementById("publicPension").value =
+    Math.round(averagePensionMonthly(years) / 1000) * 1000;
+  calculate();
+}
+function applyYearsEstimate(){
+  const y = clamp(22 - clamp(val("youngest"), 0, 30), 1, 40);
+  document.getElementById("years").value = y;
+  calculate();
+}
+
+/* =========================================================
+   公的年金フェーズ（概算）
+   ========================================================= */
+function buildPhases(){
+  const age = clamp(val("age") || 40, 20, 90);
+  const spouse = clamp(val("spouseAge"), 0, 90);
+  const kids = clamp(val("kids"), 0, 5);
+  const youngest = clamp(val("youngest"), 0, 30);
+  const income = nonNeg("income");
+
+  const kousei = kouseiAnnual(income, age);
+  const kiso = kisoAnnual(kids);
+  const yearsToKisoEnd = kids > 0 ? Math.max(0, 18 - youngest) : 0;
+  const phases = [];
+
+  if (kids > 0 && yearsToKisoEnd > 0){
+    phases.push({
+      title:"いま 〜 末子18歳",
+      detail:"遺族基礎年金＋遺族厚生（共済）年金",
+      years:"約" + yearsToKisoEnd + "年間",
+      durY: yearsToKisoEnd,
+      annual: kiso + kousei, drop:false
+    });
+  }
+  const spouseAtEnd = spouse > 0 ? spouse + yearsToKisoEnd : 0;
+  const chukorei = (spouse > 0 && spouseAtEnd >= 40 && spouseAtEnd < 65) ? PENSION.chukorei : 0;
+  if (spouse > 0){
+    const yrs = Math.max(0, 65 - spouseAtEnd);
+    if (yrs > 0){
+      phases.push({
+        title: (kids>0 && yearsToKisoEnd>0 ? "末子18歳 〜 配偶者65歳" : "いま 〜 配偶者65歳"),
+        detail: chukorei ? "遺族厚生年金＋中高齢寡婦加算（基礎年金は終了）" : "遺族厚生年金のみ（基礎年金は終了）",
+        years:"約" + yrs + "年間",
+        durY: yrs,
+        annual: kousei + chukorei, drop:true
+      });
+    }
+    phases.push({
+      title:"配偶者65歳 〜",
+      detail:"遺族厚生年金＋配偶者ご自身の老齢年金",
+      years:"以降", durY: Infinity,
+      annual: kousei, drop:false, partial:true
+    });
+  } else if (kids > 0){
+    /* 配偶者なし：受給権は子にあり、末子が18歳年度末に達した時点で公的遺族年金は終わる */
+    phases.push({
+      title: yearsToKisoEnd > 0 ? "末子18歳 〜" : "いま 〜",
+      detail:"配偶者がいないため、お子さまの受給権が終わると公的遺族年金は受け取れません",
+      years:"以降", durY: Infinity,
+      annual: 0, drop:true
+    });
+  } else {
+    phases.push({ title:"いま 〜", detail:"遺族厚生（共済）年金", years:"", durY: Infinity, annual: kousei, drop:false });
+  }
+  phases.forEach(p => p.monthly = Math.round(p.annual / 12));
+  return phases;
+}
+
+/* =========================================================
+   メイン計算
+   ========================================================= */
+function calculate(){
+  /* 入力欄の min/max はキーボード入力を防げないため、計算側でも範囲を担保する */
+  const age        = clamp(val("age") || 40, 20, 90);
+  const living     = nonNeg("living");
+  const publicP    = nonNeg("publicPension");
+  const years      = clamp(val("years") || 15, 1, 40);
+  const education  = nonNeg("education");
+  const loan       = nonNeg("loan");
+  const savings    = nonNeg("savings");
+  const loanMonthly= nonNeg("loanMonthly");
+  const dayAmount  = parseInt(document.querySelector('input[name="dayAmount"]:checked').value) || 5000;
+  const cancerHope = parseInt(document.querySelector('input[name="cancerHope"]:checked').value) || 0;
+  const useLong    = document.getElementById("optLong").checked;
+  const useLife    = document.getElementById("optLifestyle").checked;
+  const dansin     = document.querySelector('input[name="dansin"]:checked').value === "yes";
+
+  /* --- 必要死亡保障 --- */
+  const shortfall  = Math.max(0, living - publicP);
+  const livingNeed = shortfall * 12 * years;
+  const loanNeed   = dansin ? 0 : loan;            /* ★団信ありならローンは加算しない */
+  const totalNeed  = livingNeed + education + loanNeed - savings;
+  const needDeath  = Math.max(0, totalNeed);
+  const recUnits   = Math.min(maxLifeUnits(age), Math.max(0, Math.ceil(needDeath / 1000000)));
+
+  document.getElementById("dansinHint").innerHTML = dansin
+    ? "団信ありなので、ローン残高は必要保障額に<b>含めません</b>（死亡時に完済されるため）。"
+    : "団信なしのため、ローン残高を必要保障額に<b>含めます</b>。";
+
+  const m = manLabel(needDeath);
+  document.getElementById("needDeathMan").innerHTML = m.num + '<span class="unit">' + m.unit + '</span>';
+  document.getElementById("needDeathYen").textContent = yen(needDeath);
+  document.getElementById("recLifeUnits").textContent = recUnits;
+
+  /* --- 内訳 --- */
+  const parts = [
+    {k:"生活費の不足分", v:livingNeed, c:"#2A6FB0"},
+    {k:"教育費",         v:education,  c:"#5B8C5A"},
+    {k:"住宅ローン",     v:loanNeed,   c:"#C9822B"}
+  ];
+  const gross = parts.reduce((s,p)=>s+p.v,0);
+  const stack = document.getElementById("stack"), lg = document.getElementById("stackLegend");
+  stack.innerHTML = ""; lg.innerHTML = "";
+  let pStackHtml = "", pLegHtml = "";
+  if (gross <= 0){
+    stack.innerHTML = '<div style="width:100%;background:#CBD5DF;color:#3B4956">必要額の入力がありません</div>';
+    pStackHtml = '<div style="width:100%;background:#CBD5DF;color:#3B4956">必要額の入力がありません</div>';
+  } else {
+    parts.forEach(p=>{
+      if (p.v <= 0) return;
+      const pct = p.v / gross * 100;
+      stack.insertAdjacentHTML("beforeend",
+        '<div style="width:'+pct+'%;background:'+p.c+'" title="'+p.k+' '+yen(p.v)+'">'+(pct>=11?Math.round(pct)+"%":"")+'</div>');
+      lg.insertAdjacentHTML("beforeend",
+        '<span><i style="background:'+p.c+'"></i>'+p.k+' <b>'+manShort(p.v)+'</b></span>');
+      pStackHtml += '<div style="width:'+pct+'%;background:'+p.c+'">'+(pct>=11?Math.round(pct)+"%":"")+'</div>';
+      pLegHtml   += '<span><i style="background:'+p.c+'"></i>'+p.k+' '+manShort(p.v)+'</span>';
+    });
+  }
+  document.getElementById("pStack").innerHTML = pStackHtml;
+  document.getElementById("pLegend").innerHTML = pLegHtml;
+
+  let dh = "", pDed = "";
+  if (savings > 0){
+    dh   = '<div class="deduct"><span>貯蓄・他の死亡保障を差し引き</span><b>− '+manShort(savings)+'</b></div>';
+    pDed = "貯蓄・他の死亡保障 −" + manShort(savings);
+  }
+  if (dansin && loan > 0){
+    dh += '<div class="deduct dansin"><span>住宅ローンは団信で完済（加算せず）</span><b>'+manShort(loan)+' 対象外</b></div>';
+    pDed += (pDed ? "／" : "") + "住宅ローン " + manShort(loan) + " は団信で完済のため対象外";
+  }
+  document.getElementById("deducts").innerHTML = dh;
+  document.getElementById("pDeduct").textContent = pDed;
+
+  document.getElementById("dansinNote").innerHTML = (dansin && loanMonthly > 0)
+    ? '<div class="good"><strong>団信ありの効果</strong><br>死亡時にローン残高 '+manShort(loan)+' が消え、毎月の返済 '
+      + jp(loanMonthly) + '円も不要になります。遺族の必要生活費をこの分だけ下げて試算すると、必要保障額はさらに '
+      + manShort(Math.min(livingNeed, loanMonthly*12*years)) + ' 程度圧縮できます。</div>'
+    : '';
+
+  /* --- 口数ゲージ --- */
+  const cap = maxLifeUnits(age);
+  document.getElementById("unitFill").style.width = Math.min(100, recUnits / cap * 100) + "%";
+  document.getElementById("unitCap").textContent = "加入限度 " + cap + "口";
+  const covered = recUnits * BENEFIT.deathPerUnit;
+  const shortUnits = needDeath > covered;
+  document.getElementById("unitAlert").innerHTML = shortUnits
+    ? '<div class="alert"><strong>限度いっぱいでも足りません。</strong><br>'+cap+'口＝'+manShort(covered)
+      +'まで。差額 <b>'+manShort(needDeath-covered)+'</b> は他の保障や貯蓄で備える必要があります。</div>'
+    : '';
+  const pw = document.getElementById("pNeedWarn");
+  if (shortUnits){
+    pw.style.display = "block";
+    pw.innerHTML = "この年齢の加入限度 "+cap+"口（"+manShort(covered)+"）では不足します。差額 "+manShort(needDeath-covered)+" は他の保障・貯蓄でのご準備が必要です。";
+  } else pw.style.display = "none";
+
+  /* --- 掛金（式は原本と同一） --- */
+  const band = getBand(age), sBand = getSpecialBand(age);
+  const lifeUnits  = recUnits || 10;
+  const basicUnits = Math.min(10, Math.round(dayAmount / 1000));
+  /* 特約は基本口数以内。希望額が基本口数を超える場合は切り下げる */
+  const cancerWant = Math.min(10, Math.round(cancerHope / 200000));
+  const cancerUnits= Math.min(basicUnits, cancerWant);
+
+  const premParts = [
+    {k:"生命",     v:lifeUnits  * rates.life[band],       c:"#16283C"},
+    {k:"医療基本", v:basicUnits * rates.basic[band],      c:"#2A6FB0"},
+    {k:"手術",     v:basicUnits * rates.surgery[sBand],   c:"#5B8C5A"},
+    {k:"先進医療", v:rates.advanced,                      c:"#8FB4D4"},
+    {k:"退院後",   v:basicUnits * rates.discharge[sBand], c:"#C9822B"},
+    {k:"ガン診断", v:cancerUnits* rates.cancer[sBand],    c:"#8E5A9E"}
+  ];
+  if (useLong) premParts.push({k:"長期入院",   v:basicUnits*rates.long[sBand],      c:"#A8B3BD"});
+  if (useLife) premParts.push({k:"生活習慣病", v:basicUnits*rates.lifestyle[sBand], c:"#6B8E9E"});
+  const lifePrem = premParts[0].v;
+  const total = premParts.reduce((s,p)=>s+p.v,0);
+
+  document.getElementById("monthlyPrem").innerHTML = jp(total) + '<span class="unit">円 / 月</span>';
+  document.getElementById("bandChip").textContent = "年齢群団 " + band;
+  document.getElementById("pBandLabel").textContent = "年齢群団 " + band + "（" + age + "歳）";
+  document.getElementById("pPrem").innerHTML = jp(total) + '<span class="u">円/月</span>';
+  document.getElementById("pPremYear").textContent = "年額 " + jp(total*12) + "円";
+
+  const maxP = Math.max(...premParts.map(p=>p.v), 1);
+  let bh = "", pPremRows = "";
+  premParts.forEach(p=>{
+    bh += '<div class="brow"><span class="bl"><i style="background:'+p.c+'"></i>'+p.k+'</span>'
+       +  '<span class="bt"><i style="width:'+(p.v/maxP*100)+'%;background:'+p.c+'"></i></span>'
+       +  '<span class="bv">'+jp(p.v)+'</span></div>';
+    pPremRows += '<tr><td>'+p.k+'</td><td class="num">'+jp(p.v)+'</td></tr>';
+  });
+  bh += '<div class="subtotal"><span>合計（月額）</span><span class="bv">'+jp(total)+'円</span></div>';
+  document.getElementById("premBreakdown").innerHTML = bh;
+  document.getElementById("pPremTbl").innerHTML =
+    '<thead><tr><th>内訳</th><th style="text-align:right">月額</th></tr></thead><tbody>'
+    + pPremRows + '<tr class="sum"><td>合計</td><td class="num">'+jp(total)+'円</td></tr></tbody>';
+
+  const capMsg = (cancerUnits < cancerWant)
+    ? "ガン診断一時金の特約は基本口数（" + basicUnits + "口）以内までのため、ご希望の "
+      + manShort(cancerHope) + " ではなく " + manShort(cancerUnits * BENEFIT.cancerLumpPerUnit)
+      + " で試算しています。希望額どおりにするには入院日額を " + jp(cancerWant * 1000) + "円以上にしてください。"
+    : "";
+
+  let premNotes = "";
+  if (recUnits === 0) premNotes += '<div class="alert">必要保障額が0円のため、生命は仮に<b>10口</b>で試算しています。</div>';
+  if (capMsg)         premNotes += '<div class="alert">' + capMsg + '</div>';
+  document.getElementById("premNote").innerHTML = premNotes;
+
+  /* --- 保障内容 --- */
+  renderBenefits(lifeUnits, basicUnits, cancerUnits, useLong, useLife, total, capMsg);
+
+  /* --- 公的年金フェーズ --- */
+  renderPhases();
+
+  /* --- サマリー --- */
+  document.getElementById("sbNeed").textContent  = manShort(needDeath);
+  document.getElementById("sbCover").textContent = manShort(lifeUnits * BENEFIT.deathPerUnit);
+  document.getElementById("sbPrem").textContent  = jp(total) + "円";
+  document.getElementById("pNeed").innerHTML = m.num + '<span class="u">' + m.unit + '</span>';
+  document.getElementById("pNeedYen").textContent = yen(needDeath);
+
+  /* --- 印刷用の条件欄 --- */
+  const spouse = clamp(val("spouseAge"), 0, 90), kids = clamp(val("kids"), 0, 5);
+  document.getElementById("pCond1").innerHTML =
+    '<dt>本人年齢</dt><dd>'+age+'歳</dd>'
+   +'<dt>年収</dt><dd>'+manShort(nonNeg("income"))+'</dd>'
+   +'<dt>配偶者</dt><dd>'+(spouse>0? spouse+"歳" : "なし")+'</dd>'
+   +'<dt>子供</dt><dd>'+kids+'人'+(kids>0? "（末子"+clamp(val("youngest"),0,30)+"歳）":"")+'</dd>';
+  document.getElementById("pCond2").innerHTML =
+    '<dt>必要生活費</dt><dd>'+jp(living)+'円/月</dd>'
+   +'<dt>公的年金見込</dt><dd>'+jp(publicP)+'円/月</dd>'
+   +'<dt>保障年数</dt><dd>'+years+'年</dd>'
+   +'<dt>教育費残</dt><dd>'+manShort(education)+'</dd>';
+  document.getElementById("pCond3").innerHTML =
+    '<dt>ローン残高</dt><dd>'+manShort(loan)+'</dd>'
+   +'<dt>団信</dt><dd>'+(dansin? "加入あり":"なし")+'</dd>'
+   +'<dt>貯蓄等</dt><dd>'+manShort(savings)+'</dd>'
+   +'<dt>希望入院日額</dt><dd>'+jp(dayAmount)+'円</dd>';
+
+  const today = new Date();
+  const ds = today.getFullYear()+"年"+(today.getMonth()+1)+"月"+today.getDate()+"日";
+  document.getElementById("pDate").textContent = ds;
+  document.getElementById("pDate2").textContent = ds;
+
+  refreshConversions();
+  updateStages(age);
+  /* グラフは最後に描く。ここで失敗しても上の表示は完了している */
+  updateChart(age, lifeUnits, basicUnits, cancerUnits, useLong, useLife);
+}
+
+/* =========================================================
+   保障内容の描画
+   ========================================================= */
+function renderBenefits(lifeUnits, basicUnits, cancerUnits, useLong, useLife, total, capMsg){
+  const B = BENEFIT;
+  const tbd = '要確認（てびき参照）';
+  const death     = lifeUnits * B.deathPerUnit;
+  const dutyDeath = lifeUnits * B.dutyDeathPerUnit;
+  const hosp      = basicUnits * B.hospPerUnit;
+  const cHosp     = basicUnits * B.cancerHospPerUnit;
+  const cLump     = cancerUnits * B.cancerLumpPerUnit;
+
+  document.getElementById("benefitSub").textContent =
+    "生命 " + lifeUnits + "口／医療基本 " + basicUnits + "口" + (cancerUnits? "／ガン診断 "+cancerUnits+"口" : "");
+  document.getElementById("lifeUnitLabel").textContent = lifeUnits + "口";
+  document.getElementById("medUnitLabel").textContent  = basicUnits + "口";
+  document.getElementById("pBenefitSub").textContent =
+    "生命 " + lifeUnits + "口／医療基本 " + basicUnits + "口" + (cancerUnits? "／ガン診断 "+cancerUnits+"口" : "");
+
+  const lifeRows = [
+    {n:"死亡・高度障害", e:"病気・ケガを問わず", a:yen(death), key:true},
+    {n:"公務災害・交通災害による死亡", e:"通勤中や校務中の事故など", a:yen(dutyDeath)},
+    {n:"障害が残ったとき", e:"程度に応じて", a:yen(lifeUnits*B.disabilityMinPerUnit)+" 〜 "+yen(lifeUnits*B.disabilityMaxPerUnit)}
+  ];
+
+  const medRows = [
+    {n:"入院（一般）", e:"1日あたり", a:yen(hosp)+" / 日", key:true},
+    {n:"入院30日の場合", e:"一般の病気・ケガ", a:yen(hosp*30)},
+    {n:"ガンで入院", e:"1日あたり・日数無制限", a:yen(cHosp)+" / 日"},
+    {n:"ガンと診断されたとき", e:"一時金", a: cLump>0 ? yen(cLump) : "付帯なし", key:cLump>0},
+    {n:"手術を受けたとき", e:"手術特約", a: B.surgeryPerUnit!=null ? yen(basicUnits*B.surgeryPerUnit) : tbd, tbd:B.surgeryPerUnit==null},
+    {n:"先進医療を受けたとき", e:"技術料の実費", a: B.advancedLimit!=null ? yen(B.advancedLimit)+" まで" : tbd, tbd:B.advancedLimit==null},
+    {n:"退院後の通院等", e:"退院後特約", a: B.dischargePerUnit!=null ? yen(basicUnits*B.dischargePerUnit) : tbd, tbd:B.dischargePerUnit==null}
+  ];
+  if (useLong) medRows.push({n:"長期入院", e:"長期入院特約", a: B.longHospPerUnit!=null ? yen(basicUnits*B.longHospPerUnit) : tbd, tbd:B.longHospPerUnit==null});
+  if (useLife) medRows.push({n:"生活習慣病で入院", e:"生活習慣病特約", a: B.lifestylePerUnit!=null ? yen(basicUnits*B.lifestylePerUnit)+" / 日" : tbd, tbd:B.lifestylePerUnit==null});
+
+  const rowHtml = r => '<div class="r'+(r.key?' key':'')+(r.tbd?' tbd':'')+'">'
+    + '<span class="n">'+r.n+(r.e?'<em>'+r.e+'</em>':'')+'</span><span class="a">'+r.a+'</span></div>';
+  document.getElementById("lifeBenefits").innerHTML = lifeRows.map(rowHtml).join("");
+  document.getElementById("medBenefits").innerHTML  = medRows.map(rowHtml).join("");
+
+  const pRow = r => '<tr'+(r.key?' class="hi"':'')+'><td>'+r.n+'</td><td class="num">'+r.a+'</td></tr>';
+  document.getElementById("pLifeTbl").innerHTML =
+    '<thead><tr><th>こんなとき</th><th style="text-align:right">受け取れる額</th></tr></thead><tbody>'+lifeRows.map(pRow).join("")+'</tbody>';
+  document.getElementById("pMedTbl").innerHTML =
+    '<thead><tr><th>こんなとき</th><th style="text-align:right">受け取れる額</th></tr></thead><tbody>'+medRows.map(pRow).join("")+'</tbody>';
+
+  document.getElementById("levPrem").textContent  = jp(total) + "円 / 月";
+  document.getElementById("levDeath").textContent = manShort(death);
+
+  const missing = medRows.filter(r=>r.tbd).length;
+  const base = "掛金 " + jp(total) + "円/月＝年間 " + jp(total*12) + "円で、上記の保障が確保できます。";
+  const tbdMsg = missing ? " 「要確認」の項目は給付額が本書に未収載のため、共済のてびきの該当ページでご確認ください。" : "";
+  document.getElementById("benefitNote").textContent = base + tbdMsg + (capMsg ? " " + capMsg : "");
+  document.getElementById("pBenefitNote").textContent =
+    "掛金 " + jp(total) + "円/月（年間 " + jp(total*12) + "円）で上記の保障を確保できます。給付額は共済のてびきに基づく参考値です。"
+    + tbdMsg + (capMsg ? " " + capMsg : "");
+}
+
+/* =========================================================
+   公的年金フェーズの描画
+   ========================================================= */
+function renderPhases(){
+  const phases = buildPhases();
+  const el = document.getElementById("phases");
+  el.innerHTML = phases.map((p,i)=>
+    '<div class="phase'+(p.drop?' drop':'')+'">'
+    + '<div class="ph">'+(i+1)+'</div>'
+    + '<div><div class="pt">'+p.title+(p.years?' <span style="font-weight:500;color:#62707E">'+p.years+'</span>':'')+'</div>'
+    + '<div class="pd">'+p.detail+'</div></div>'
+    + '<div class="pv">'+jp(p.monthly)+'円<small>月額'+(p.partial?'・遺族分のみ':'')+'</small></div></div>'
+  ).join("");
+
+  document.getElementById("pPhaseTbl").innerHTML =
+    '<thead><tr><th>時期</th><th>内容</th><th style="text-align:right">月額（概算）</th></tr></thead><tbody>'
+    + phases.map(p=>'<tr'+(p.drop?' class="now"':'')+'><td>'+p.title+(p.years?'<br><span style="color:#666">'+p.years+'</span>':'')
+      +'</td><td>'+p.detail+'</td><td class="num">'+jp(p.monthly)+'円'+(p.partial?'<br><span style="font-weight:400;color:#666">遺族分のみ</span>':'')+'</td></tr>').join("")
+    + '</tbody>';
+
+  const drop = phases.find(p=>p.drop);
+  const first = phases[0];
+  let msg = "";
+  if (drop && first && first !== drop){
+    const diff = first.monthly - drop.monthly;
+    if (drop.monthly === 0){
+      msg = "末子が18歳を超えると公的遺族年金は月 " + jp(first.monthly) + "円 から 0円 になります。以降は公的保障がありません。";
+    } else if (diff > 0){
+      msg = "末子が18歳を超えると遺族基礎年金が終了し、公的年金は月 " + jp(diff) + "円 減ります。ここが家計の谷になります。";
+    }
+  }
+  const kids = val("kids");
+  if (kids === 0) msg += (msg?" ":"") + "お子さまがいないため遺族基礎年金の対象外です。さらに2028年4月以降は遺族厚生年金が原則5年の有期給付になるため、上乗せの重要度が高い区分にあたります。";
+  const a = document.getElementById("pensionAlert");
+  a.innerHTML = msg ? '<div class="alert">'+msg+'</div>' : '';
+  const pa = document.getElementById("pPensionWarn");
+  if (msg){ pa.style.display="block"; pa.textContent = msg; } else pa.style.display="none";
+}
+
+/* =========================================================
+   グラフ（画面用＋印刷用）
+   ========================================================= */
+const bandPlugin = {
+  id:"bandPlugin",
+  beforeDatasetsDraw(chart){
+    const {ctx, chartArea:a, scales:{x}} = chart;
+    if (!a) return;
+    ctx.save();
+    BANDS.forEach((b,i)=>{
+      const x1 = x.getPixelForValue(Math.max(b.from-.5, x.min));
+      const x2 = x.getPixelForValue(Math.min(b.to+.5, x.max));
+      if (x2 <= a.left || x1 >= a.right) return;
+      const L = Math.max(x1,a.left), R = Math.min(x2,a.right);
+      ctx.fillStyle = i%2 ? "rgba(42,111,176,.06)" : "rgba(22,40,60,.025)";
+      ctx.fillRect(L,a.top,R-L,a.bottom-a.top);
+      if (x1 > a.left){
+        ctx.strokeStyle="rgba(22,40,60,.2)"; ctx.setLineDash([3,3]); ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(L,a.top); ctx.lineTo(L,a.bottom); ctx.stroke(); ctx.setLineDash([]);
+      }
+      if (R-L > 40){
+        ctx.fillStyle="rgba(22,40,60,.45)"; ctx.font="600 10px 'IBM Plex Mono', monospace";
+        ctx.textAlign="center"; ctx.fillText(b.label,(L+R)/2,a.top+12);
+      }
+    });
+    ctx.restore();
+  }
+};
+const nowPlugin = {
+  id:"nowPlugin",
+  afterDatasetsDraw(chart,args,opts){
+    const {ctx, chartArea:a, scales:{x}} = chart;
+    const age = opts && opts.age;
+    if (!a || !age || age < x.min || age > x.max) return;
+    const px = x.getPixelForValue(age);
+    ctx.save();
+    ctx.strokeStyle="#C4402A"; ctx.lineWidth=2; ctx.setLineDash([5,4]);
+    ctx.beginPath(); ctx.moveTo(px,a.top); ctx.lineTo(px,a.bottom); ctx.stroke(); ctx.setLineDash([]);
+    const label = "今ここ "+age+"歳";
+    ctx.font="700 11px 'Zen Kaku Gothic New', sans-serif";
+    const w = ctx.measureText(label).width + 16;
+    let lx = Math.max(a.left+2, Math.min(px - w/2, a.right - w - 2));
+    ctx.fillStyle="#C4402A"; ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(lx,a.bottom-22,w,18,9); else ctx.rect(lx,a.bottom-22,w,18);
+    ctx.fill();
+    ctx.fillStyle="#fff"; ctx.textAlign="center"; ctx.textBaseline="middle";
+    ctx.fillText(label, lx+w/2, a.bottom-13);
+    ctx.restore();
+  }
+};
+
+let chart = null, pchart = null, chartFailed = false;
+function buildSeries(currentAge, lifeUnits, basicUnits, cancerUnits, useLong, useLife){
+  const start = Math.max(20, currentAge - 5);
+  const d = [];
+  for (let a = start; a <= 90; a++){
+    const b = getBand(a), sb = getSpecialBand(a);
+    const lu = Math.min(lifeUnits, maxLifeUnits(a));
+    let p = lu*rates.life[b] + basicUnits*rates.basic[b] + basicUnits*rates.surgery[sb]
+          + rates.advanced + basicUnits*rates.discharge[sb] + cancerUnits*rates.cancer[sb];
+    if (useLong) p += basicUnits*rates.long[sb];
+    if (useLife) p += basicUnits*rates.lifestyle[sb];
+    d.push({x:a, y:p});
+  }
+  return {data:d, start};
+}
+function chartConfig(series, currentAge, forPrint){
+  return {
+    type:"line",
+    data:{datasets:[{
+      data:series.data, parsing:false, stepped:"before",
+      borderColor:"#16283C", borderWidth: forPrint?1.6:2.4,
+      backgroundColor:"rgba(42,111,176,.14)", fill:true, pointRadius:0, pointHitRadius:14
+    }]},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      animation: forPrint ? false : {duration:320},
+      interaction:{mode:"nearest", axis:"x", intersect:false},
+      layout:{padding:{top:6}},
+      plugins:{
+        legend:{display:false},
+        nowPlugin:{age:currentAge},
+        tooltip:{
+          enabled: !forPrint, backgroundColor:"#16283C", padding:11, displayColors:false,
+          titleFont:{family:"'Zen Kaku Gothic New', sans-serif", size:12},
+          bodyFont:{family:"'IBM Plex Mono', monospace", size:14, weight:"600"},
+          callbacks:{
+            title: it => it[0].parsed.x+"歳（群団 "+getBand(it[0].parsed.x)+"）",
+            label: it => jp(it.parsed.y)+"円 / 月"
+          }
+        }
+      },
+      scales:{
+        x:{type:"linear", min:series.start, max:90,
+           ticks:{stepSize:5, color:"#555", font:{family:"'IBM Plex Mono', monospace", size: forPrint?8:11}, callback:v=>v+"歳"},
+           grid:{display:false}},
+        y:{beginAtZero:false,
+           title:{display:!forPrint, text:"月掛金（円）", font:{size:11}, color:"#62707E"},
+           ticks:{color:"#555", font:{family:"'IBM Plex Mono', monospace", size: forPrint?8:11}, callback:v=>jp(v)},
+           grid:{color:"rgba(22,40,60,.08)"}}
+      }
+    },
+    plugins:[bandPlugin, nowPlugin]
+  };
+}
+/* 入力のたびに destroy → new すると1打鍵ごとに Chart を2個作り直すことになるので、
+   既存インスタンスがあればデータだけ差し替える */
+function applySeries(c, s, currentAge){
+  c.data.datasets[0].data = s.data;
+  c.options.plugins.nowPlugin.age = currentAge;
+  c.options.scales.x.min = s.start;
+  c.update();
+}
+function chartUnavailable(msg){
+  chartFailed = true;
+  const box = '<div style="display:grid;place-items:center;height:100%;padding:16px;text-align:center;'
+    + 'font-size:.82rem;color:#62707E;border:1px dashed #B9C6D2;border-radius:11px">' + msg + '</div>';
+  const w = document.querySelector(".chartwrap");
+  if (w) w.innerHTML = box;
+  const p = document.querySelector(".p-chart");
+  if (p) p.innerHTML = box;
+}
+function updateChart(currentAge, lifeUnits, basicUnits, cancerUnits, useLong, useLife){
+  if (chartFailed) return;
+  if (typeof Chart === "undefined"){
+    chartUnavailable("グラフの描画ライブラリを読み込めませんでした。<br>掛金の推移グラフのみ表示されません（他の試算結果には影響しません）。");
+    return;
+  }
+  const s = buildSeries(currentAge, lifeUnits, basicUnits, cancerUnits, useLong, useLife);
+  try {
+    if (chart) applySeries(chart, s, currentAge);
+    else chart = new Chart(document.getElementById("premChart").getContext("2d"), chartConfig(s, currentAge, false));
+    if (pchart) applySeries(pchart, s, currentAge);
+    else pchart = new Chart(document.getElementById("pChart").getContext("2d"), chartConfig(s, currentAge, true));
+  } catch (e) {
+    chartUnavailable("グラフを描画できませんでした。<br>掛金の推移グラフのみ表示されません（他の試算結果には影響しません）。");
+  }
+}
+
+/* =========================================================
+   ライフステージ
+   ========================================================= */
+const stages = [
+  {name:"独身・若手",  range:[22,29], event:"就職・独身・結婚準備",           death:"低め",  med:"高",     focus:"死亡は最低限＋基本医療＋先進医療",   note:"告知をクリアしやすい時期"},
+  {name:"結婚・出産",  range:[30,35], event:"結婚・第一子誕生",               death:"中",    med:"高",     focus:"死亡を厚めに。手術・ガン診断を追加", note:"子供の誕生で必要額が急増"},
+  {name:"子育てピーク",range:[36,45], event:"第二子・教育費が本格化",         death:"中〜高",med:"高",     focus:"死亡2,000万円前後の充実プラン",      note:"41歳で掛金が上がる点に注意"},
+  {name:"教育終盤",    range:[46,55], event:"高校・大学費用、独立が近づく",   death:"高",    med:"高",     focus:"死亡は徐々に減額、医療は維持",       note:"子供の独立後は減額の余地が大きい"},
+  {name:"定年準備",    range:[56,65], event:"子供独立・ローン完済・退職準備", death:"高",    med:"高",     focus:"死亡500〜1,000万円。医療を厳選",     note:"66歳で限度が下がり掛金が急増"},
+  {name:"退職後前期",  range:[66,75], event:"年金生活・健康状態の変化",       death:"高",    med:"高",     focus:"死亡は最小限にし、医療を中心に",     note:"契約限度は5〜10口"},
+  {name:"高齢後期",    range:[76,90], event:"介護・終末期の準備",             death:"高",    med:"中〜高", focus:"最小限で継続するか見直すか",         note:"費用対効果を厳しく判断する"}
+];
+const badgeClass = v => v.includes("低") ? "badge-low" : v.includes("中") ? "badge-mid" : "badge-high";
+
+function updateStages(age){
+  let html = '<table><thead><tr><th>ステージ</th><th>年齢</th><th>主な出来事</th><th>死亡の公的カバー</th><th>医療の公的カバー</th><th>焦点</th><th>注意点</th></tr></thead><tbody>';
+  let p = '<thead><tr><th>ステージ</th><th>年齢</th><th>主な出来事</th><th>焦点</th><th>注意点</th></tr></thead><tbody>';
+  let cards = "";
+  stages.forEach(s=>{
+    const now = age >= s.range[0] && age <= s.range[1];
+    html += '<tr class="'+(now?'now':'')+'"><td><b>'+s.name+'</b>'+(now?'<span class="nowtag">今ここ</span>':'')+'</td>'
+      + '<td><span class="age">'+s.range[0]+'–'+s.range[1]+'歳</span></td><td>'+s.event+'</td>'
+      + '<td><span class="badge '+badgeClass(s.death)+'">'+s.death+'</span></td>'
+      + '<td><span class="badge '+badgeClass(s.med)+'">'+s.med+'</span></td>'
+      + '<td>'+s.focus+'</td><td>'+s.note+'</td></tr>';
+    p += '<tr'+(now?' class="now"':'')+'><td>'+s.name+(now?'（今ここ）':'')+'</td><td>'+s.range[0]+'–'+s.range[1]+'歳</td>'
+      + '<td>'+s.event+'</td><td>'+s.focus+'</td><td>'+s.note+'</td></tr>';
+    cards += '<div class="scard '+(now?'now':'')+'"><div class="sh"><b>'+s.name+'</b>'
+      + '<span class="age">'+s.range[0]+'–'+s.range[1]+'歳</span>'+(now?'<span class="nowtag">今ここ</span>':'')+'</div>'
+      + '<div style="font-size:.84rem">'+s.event+'</div><dl>'
+      + '<dt>死亡カバー</dt><dd><span class="badge '+badgeClass(s.death)+'">'+s.death+'</span></dd>'
+      + '<dt>医療カバー</dt><dd><span class="badge '+badgeClass(s.med)+'">'+s.med+'</span></dd>'
+      + '<dt>焦点</dt><dd>'+s.focus+'</dd><dt>注意点</dt><dd>'+s.note+'</dd></dl></div>';
+  });
+  document.getElementById("stageTable").innerHTML = html + '</tbody></table>';
+  document.getElementById("pStageTbl").innerHTML  = p + '</tbody>';
+  document.getElementById("stageCards").innerHTML = cards;
+}
+
+/* =========================================================
+   印刷
+   ========================================================= */
+function doPrint(){
+  if (pchart) pchart.resize();
+  setTimeout(()=>window.print(), 120);
+}
+window.addEventListener("beforeprint", ()=>{ if (pchart) pchart.resize(); });
+
+calculate();
+</script>
+</body>
+</html>

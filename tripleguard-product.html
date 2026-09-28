@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教職員共済 トリプルガード 商品内容ガイド</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --ink:#16283C; --ink-2:#2F4A66; --sky:#2A6FB0; --sky-soft:#E4EEF7;
+  --shu:#C4402A; --shu-soft:#FBEAE6;
+  --gain:#1F6B4A; --gain-soft:#E3F2EA;
+  --paper:#EEF2F6; --card:#FFFFFF; --line:#D9E1E9; --line-strong:#B9C6D2;
+  --text:#1C232A; --muted:#62707E;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+  background:var(--paper);color:var(--text);line-height:1.7;font-size:16px;padding:20px 16px 80px}
+.container{max-width:1080px;margin:0 auto}
+
+header{background:linear-gradient(150deg,var(--ink) 0%,#204A73 55%,var(--sky) 130%);
+  color:#fff;padding:26px 30px;border-radius:var(--radius);margin-bottom:22px;
+  position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(22,40,60,.22)}
+header::after{content:"";position:absolute;right:-60px;top:-70px;width:280px;height:280px;
+  border:1px solid rgba(255,255,255,.16);border-radius:50%}
+header .eyebrow{font-size:.72rem;letter-spacing:.22em;font-weight:700;color:rgba(255,255,255,.72);margin-bottom:8px}
+header h1{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:clamp(1.3rem,3.2vw,1.9rem);line-height:1.35}
+header p{font-size:.9rem;opacity:.86;margin-top:8px;max-width:62ch}
+.hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);border:0;border-radius:9px;
+  padding:9px 18px;font-family:inherit;font-size:.87rem;font-weight:700;cursor:pointer;text-decoration:none;
+  box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.btn:hover{background:#EAF1F8}
+.btn.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.45);box-shadow:none}
+.btn.ghost:hover{background:rgba(255,255,255,.22)}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(22,40,60,.06)}
+.card > h2{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:1.06rem;color:var(--ink);
+  display:flex;align-items:center;gap:10px;padding-bottom:12px;margin-bottom:18px;border-bottom:2px solid var(--line)}
+.card > h2 .step{flex:none;width:26px;height:26px;border-radius:7px;background:var(--ink);color:#fff;
+  font-family:"IBM Plex Mono",monospace;font-size:.8rem;font-weight:600;display:grid;place-items:center}
+.card > h2 small{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:400;font-size:.75rem;
+  color:var(--muted);margin-left:auto;text-align:right}
+h3.sub{font-size:.92rem;color:var(--ink);margin:22px 0 10px;padding-left:10px;border-left:4px solid var(--sky)}
+h3.sub:first-of-type{margin-top:0}
+p.lead{font-size:.88rem;color:#3B4956;margin-bottom:14px}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--ink);color:#fff;font-weight:700;font-size:.78rem;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:#F8FAFC}
+td.num,th.num{text-align:right;font-family:"IBM Plex Mono",monospace;font-weight:600;white-space:nowrap}
+tbody tr.hi{background:var(--gain-soft)!important}
+tbody tr.hi td{font-weight:700}
+tbody tr.band-now{background:var(--shu-soft)!important;box-shadow:inset 4px 0 0 var(--shu)}
+td em{display:block;font-style:normal;font-size:.76rem;color:var(--muted);margin-top:2px}
+
+.tag{display:inline-block;padding:1px 9px;border-radius:999px;font-size:.7rem;font-weight:700;
+  vertical-align:middle;white-space:nowrap;margin-left:6px}
+.tag-ok{background:#DDF0E1;color:#1E5B2C;border:1px solid #A9D6B4}
+.tag-tbd{background:#FBEFD3;color:#7A5A0E;border:1px solid #E5CE94}
+
+.note{background:#FDF7E7;border:1px solid #EBD9A8;border-left:4px solid #C68A15;padding:12px 15px;
+  border-radius:0 10px 10px 0;font-size:.82rem;margin-top:16px;color:#5C4A15}
+.note strong{color:#7A5E10}
+.alert{background:var(--shu-soft);border:1px solid rgba(196,64,42,.3);border-left:4px solid var(--shu);
+  padding:12px 15px;border-radius:0 10px 10px 0;font-size:.82rem;margin-top:14px;color:#7A2A1B}
+.good{background:var(--gain-soft);border:1px solid #B4D9C4;border-left:4px solid var(--gain);
+  padding:12px 15px;border-radius:0 10px 10px 0;font-size:.82rem;margin-top:14px;color:#144A33}
+.note ul,.alert ul,.good ul{margin:6px 0 0 18px}
+.note li,.alert li,.good li{margin-bottom:3px}
+
+.builder{display:grid;grid-template-columns:280px 1fr;gap:22px;align-items:start}
+@media(max-width:860px){.builder{grid-template-columns:1fr}}
+.ctrl{border:1px solid var(--line);border-radius:11px;padding:16px 18px;background:#FBFCFD;
+  container-type:inline-size}
+.field{margin-bottom:13px}
+.field:last-child{margin-bottom:0}
+label{display:block;font-size:.8rem;font-weight:700;margin-bottom:5px;color:#3B4956}
+input[type=number]{width:100%;padding:9px 11px;border:1px solid var(--line-strong);border-radius:9px;
+  font-family:"IBM Plex Mono",monospace;font-size:1rem;font-weight:500;color:var(--text);background:#fff;text-align:right}
+input:focus-visible,button:focus-visible{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(42,111,176,.22)}
+.hint{font-size:.74rem;color:var(--muted);margin-top:4px;line-height:1.5}
+/* ---- 口数ステッパー ---- */
+.stepper{display:grid;grid-template-columns:46px 1fr 46px;gap:8px}
+.stepper input{text-align:center}
+.sbtn{border:1px solid var(--line-strong);background:#fff;border-radius:9px;
+  font-family:inherit;font-size:1.3rem;font-weight:700;color:var(--ink);cursor:pointer;
+  line-height:1;display:grid;place-items:center;min-height:44px;user-select:none;padding:0}
+.sbtn:hover:not(:disabled){background:var(--sky-soft);border-color:var(--sky)}
+.sbtn:active:not(:disabled){transform:translateY(1px)}
+.sbtn:disabled{opacity:.3;cursor:not-allowed}
+
+/* ---- 四角いトグルタイル ---- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{display:block;position:relative;margin:0;cursor:pointer}
+.tile input{position:absolute;opacity:0;width:1px;height:1px}
+.tile .tin{display:block;position:relative;border:1.5px solid var(--line-strong);
+  border-radius:11px;padding:10px 30px 9px 11px;background:#fff;min-height:62px;
+  transition:background .15s,border-color .15s}
+.tile:hover .tin{border-color:var(--sky);background:var(--sky-soft)}
+.tile input:checked + .tin{border-color:var(--sky);background:var(--sky-soft);box-shadow:inset 0 0 0 1px var(--sky)}
+.tile input:focus-visible + .tin{outline:3px solid rgba(42,111,176,.35);outline-offset:2px}
+.tile .tname{display:block;font-size:.82rem;font-weight:700;color:#4A5866;line-height:1.35}
+.tile input:checked + .tin .tname{color:var(--ink)}
+.tile .tmeta{display:block;font-size:.71rem;color:var(--muted);margin-top:3px;
+  font-family:"IBM Plex Mono",monospace}
+.tile .tmark{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:5px;
+  border:1.5px solid var(--line-strong);background:#fff}
+.tile input:checked + .tin .tmark{background:var(--sky);border-color:var(--sky)}
+.tile input:checked + .tin .tmark::after{content:"";position:absolute;left:5px;top:1px;
+  width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+@media(max-width:420px){.tiles{grid-template-columns:1fr}.tile .tin{min-height:0}}
+/* サイドバーに入ると1列あたりが狭く、特約名が途中で折り返すため1列に切り替える */
+@container (max-width:380px){.tiles{grid-template-columns:1fr}.tile .tin{min-height:0}}
+
+.result{border:1px solid var(--line);border-radius:11px;padding:18px 20px;background:#FAFCFE;margin-bottom:16px}
+.cap{font-size:.78rem;font-weight:700;color:var(--muted)}
+.amount{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:clamp(1.7rem,4.6vw,2.5rem);
+  line-height:1.15;color:var(--ink);margin-top:2px}
+.amount .unit{font-size:.42em;margin-left:.14em;color:var(--ink-2)}
+.sumrow{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line-strong)}
+.sumrow div{font-size:.81rem;color:#3B4956}
+.sumrow b{font-family:"IBM Plex Mono",monospace;color:var(--ink);margin-left:5px}
+.chartwrap{position:relative;height:300px}
+@media(max-width:600px){.chartwrap{height:240px}}
+.chartnote{font-size:.77rem;color:var(--muted);margin-top:10px}
+
+.srcs{display:grid;gap:9px}
+.srcs a{font-size:.82rem;color:var(--sky);word-break:break-all}
+.srcs .item{display:grid;grid-template-columns:5.6em 1fr;gap:12px;align-items:start;font-size:.84rem}
+.srcs .item b{background:var(--ink);color:#fff;border-radius:7px;text-align:center;font-size:.74rem;padding:3px 0;font-weight:700}
+.disclaimer{background:#fff;border:1px solid var(--line);border-top:5px solid var(--ink);
+  border-radius:4px 4px var(--radius) var(--radius);padding:20px 24px;font-size:.83rem;color:#3B4956;line-height:1.75}
+.disclaimer h3{font-family:"Zen Old Mincho",serif;font-size:.95rem;color:var(--ink);margin-bottom:8px}
+footer{text-align:center;margin-top:26px;font-size:.77rem;color:var(--muted);line-height:1.8}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* 狭い画面：見出しの補足が長いと本文が潰れるので下に回す */
+@media(max-width:560px){
+  .card > h2{flex-wrap:wrap}
+  .card > h2 small{width:100%;margin-left:36px;text-align:left;margin-top:3px}
+  .sumrow{gap:6px 16px}
+}
+
+@media print{
+  body{background:#fff;padding:0;font-size:9.4pt;line-height:1.5}
+  .hbtns,.builder .ctrl{display:none!important}
+  header{box-shadow:none;border-radius:0}
+  .card{break-inside:avoid;box-shadow:none;page-break-inside:avoid}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .builder{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">商品内容ガイド</div>
+    <h1>教職員共済 トリプルガード<br>保障内容・掛金のすべて</h1>
+    <p>団体生命共済と医療共済の保障内容、1口あたりの給付、年齢群団ごとの掛金レート、そして90歳までの掛金推移を、制度資料の数値だけでまとめたページです。個人の事情は入りません。純粋に「商品がどうなっているか」だけを載せています。</p>
+    <div class="hbtns">
+      <a class="btn" href="tripleguard.html">← ライフプラン提案書にもどる</a>
+      <button class="btn ghost" onclick="window.print()">印刷 / PDF保存</button>
+    </div>
+  </header>
+
+  <!-- 1. 全体像 -->
+  <div class="card">
+    <h2><span class="step">1</span>トリプルガードの構成<small>2つの共済を組み合わせた愛称</small></h2>
+    <p class="lead">
+      「トリプルガード」は単一の商品ではなく、<b>団体生命共済</b>と<b>医療共済</b>の2つをまとめた愛称です。
+      死亡保障・入院保障・特定の病気への保障という3つの備えを指しています。
+      セット商品ではないため、どちらか一方だけの加入もできます。
+    </p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>制度</th><th>役割</th><th>口数の単位</th><th class="num">加入限度</th></tr></thead>
+        <tbody>
+          <tr><td><b>団体生命共済</b></td><td>死亡・高度障害・障害の保障</td>
+              <td>1口＝死亡保障100万円</td><td class="num">年齢により5〜30口</td></tr>
+          <tr><td><b>医療共済 基本契約</b></td><td>入院の保障（日帰り入院から）</td>
+              <td>1口＝入院日額1,000円</td><td class="num">10口</td></tr>
+          <tr><td><b>医療共済 特約（7種）</b></td><td>手術・先進医療・退院後・ガンなど</td>
+              <td>特約ごと</td><td class="num">基本契約の口数以内</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="good">
+      <strong>制度の性格</strong><br>
+      組合員本人の契約があれば配偶者・子も加入できます。退職後も90歳まで契約を更新できます。
+      掛金は年齢群団制で、毎年8月1日時点の年齢によって決まります。
+    </div>
+  </div>
+
+  <!-- 2. 団体生命共済 -->
+  <div class="card">
+    <h2><span class="step">2</span>団体生命共済の保障<small>1口＝死亡保障100万円</small></h2>
+
+    <h3 class="sub">1口あたりの給付</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>こんなとき</th><th class="num">1口あたり</th><th class="num">10口なら</th><th class="num">30口なら</th></tr></thead>
+        <tbody>
+          <tr class="hi"><td>死亡・高度障害<em>病気・ケガを問わず</em></td>
+              <td class="num">100万円</td><td class="num">1,000万円</td><td class="num">3,000万円</td></tr>
+          <tr><td>公務災害・交通災害による死亡<em>通常の死亡保障に1口あたり100万円を上乗せ</em></td>
+              <td class="num">200万円</td><td class="num">2,000万円</td><td class="num">6,000万円</td></tr>
+          <tr><td>障害が残ったとき<em>程度に応じて</em></td>
+              <td class="num">5〜40万円</td><td class="num">50〜400万円</td><td class="num">150〜1,200万円</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">年齢別の加入限度</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>年齢</th><th class="num">加入できる口数</th><th class="num">死亡保障の上限</th></tr></thead>
+        <tbody>
+          <tr><td>65歳以下</td><td class="num">30口</td><td class="num">3,000万円</td></tr>
+          <tr><td>66〜70歳</td><td class="num">10口</td><td class="num">1,000万円</td></tr>
+          <tr><td>71歳以上</td><td class="num">5口</td><td class="num">500万円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert">
+      <strong>66歳で限度が3分の1になります。</strong>
+      65歳まで30口で組んでいた人は、66歳の更新で10口まで落ちます。掛金の単価も同時に上がるため、
+      このタイミングが設計上いちばん大きな段差です。
+    </div>
+  </div>
+
+  <!-- 3. 医療共済 -->
+  <div class="card">
+    <h2><span class="step">3</span>医療共済の保障<small>基本契約＋7つの特約</small></h2>
+
+    <h3 class="sub">基本契約（1口＝入院日額1,000円）</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>こんなとき</th><th class="num">1口あたり</th><th class="num">5口なら</th><th class="num">10口なら</th></tr></thead>
+        <tbody>
+          <tr class="hi"><td>入院したとき（一般）<em>日帰り入院から対象</em></td>
+              <td class="num">1,000円 / 日</td><td class="num">5,000円 / 日</td><td class="num">10,000円 / 日</td></tr>
+          <tr><td>ガンで入院したとき<em>2倍保障・日数無制限・上皮内ガンを含む</em></td>
+              <td class="num">2,000円 / 日</td><td class="num">10,000円 / 日</td><td class="num">20,000円 / 日</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="good">
+      <strong>ガン入院が日数無制限</strong>という点が、この医療共済のいちばんの特徴です。
+      一般の入院には支払限度日数がありますが、ガン入院は日数の上限なく2倍の日額が続きます。
+    </div>
+
+    <h3 class="sub">特約（7種類）</h3>
+    <p class="lead">特約はすべて<b>基本契約の口数以内</b>でしか付けられません。基本契約が3口なら、各特約も3口までです（先進医療特約は口数の設定なし）。</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>特約</th><th>保障の内容</th><th class="num">給付額</th></tr></thead>
+        <tbody>
+          <tr><td><b>手術特約</b></td><td>手術を受けたとき</td>
+              <td class="num">入院日額の20倍<span class="tag tag-tbd">要確認</span><em>入院中の手術の場合。外来手術等の倍率は未確認</em></td></tr>
+          <tr><td><b>先進医療特約</b></td><td>厚生労働大臣が定める先進医療を、定められた医療機関で受けたとき</td>
+              <td class="num">技術料の実費<span class="tag tag-tbd">要確認</span><em>通算限度額は未確認。口数の設定なし</em></td></tr>
+          <tr><td><b>退院後療養特約</b></td><td>退院後の療養・通院</td>
+              <td class="num">—<span class="tag tag-tbd">要確認</span></td></tr>
+          <tr><td><b>長期入院特約</b></td><td>入院が長期になったとき</td>
+              <td class="num">—<span class="tag tag-tbd">要確認</span></td></tr>
+          <tr class="hi"><td><b>ガン診断特約</b></td><td>ガンと診断されたとき（一時金）</td>
+              <td class="num">1口 20万円<span class="tag tag-ok">確認済</span></td></tr>
+          <tr><td><b>生活習慣病特約</b></td><td>所定の生活習慣病で入院したとき<em>糖尿病・心疾患・高血圧性疾患・脳血管疾患</em></td>
+              <td class="num">—<span class="tag tag-tbd">要確認</span></td></tr>
+          <tr><td><b>女性特定疾病特約</b></td><td>女性特定疾病で入院したとき<em>子宮筋腫・甲状腺の障害など。ガンは対象外</em></td>
+              <td class="num">—<span class="tag tag-tbd">要確認</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <strong>「要確認」と書いた項目について</strong><br>
+      給付額が確認できたものだけを数値で載せ、裏付けが取れていないものは空欄のまま「要確認」としています。
+      推定値は入れていません。共済のてびき（トリプルガード）の該当ページでご確認ください。
+    </div>
+  </div>
+
+  <!-- 4. 掛金レート表 -->
+  <div class="card">
+    <h2><span class="step">4</span>掛金の全レート表<small>1口・1か月あたり（円）</small></h2>
+    <p class="lead">
+      掛金は毎年8月1日時点の年齢が属する<b>年齢群団</b>で決まります。
+      団体生命共済と医療共済の基本契約は7区分、特約は65歳まで同一レートで66歳以降が5区分です。
+      <br><b>女性特定疾病特約はレートが確認できていないため、この表と下のプラン計算には含めていません。</b>
+    </p>
+    <div class="tablewrap"><table id="rateTable"></table></div>
+    <div class="chartnote">朱色の行が、下で入力した年齢の属する群団です。</div>
+    <div class="alert" id="rateAnomaly"></div>
+  </div>
+
+  <!-- 5. プランを組む -->
+  <div class="card">
+    <h2><span class="step">5</span>プランを組んで掛金を見る<small>年齢と口数を変えると即時に反映されます</small></h2>
+    <div class="builder">
+      <div class="ctrl">
+        <div class="field">
+          <label for="age">年齢</label>
+          <div class="stepper">
+            <button type="button" class="sbtn" id="age_dn" onclick="bump('age',-1)" aria-label="年齢を1減らす">−</button>
+            <input type="number" id="age" value="40" min="20" max="90" oninput="recalc()">
+            <button type="button" class="sbtn" id="age_up" onclick="bump('age',1)" aria-label="年齢を1増やす">＋</button>
+          </div>
+          <div class="hint" id="bandHint"></div>
+        </div>
+        <div class="field">
+          <label for="lifeUnits">団体生命共済の口数</label>
+          <div class="stepper">
+            <button type="button" class="sbtn" id="lifeUnits_dn" onclick="bump('lifeUnits',-1)" aria-label="団体生命共済の口数を1減らす">−</button>
+            <input type="number" id="lifeUnits" value="10" min="0" max="30" oninput="recalc()">
+            <button type="button" class="sbtn" id="lifeUnits_up" onclick="bump('lifeUnits',1)" aria-label="団体生命共済の口数を1増やす">＋</button>
+          </div>
+          <div class="hint" id="lifeHint"></div>
+        </div>
+        <div class="field">
+          <label for="basicUnits">医療共済 基本契約の口数</label>
+          <div class="stepper">
+            <button type="button" class="sbtn" id="basicUnits_dn" onclick="bump('basicUnits',-1)" aria-label="医療共済 基本契約の口数を1減らす">−</button>
+            <input type="number" id="basicUnits" value="5" min="0" max="10" oninput="recalc()">
+            <button type="button" class="sbtn" id="basicUnits_up" onclick="bump('basicUnits',1)" aria-label="医療共済 基本契約の口数を1増やす">＋</button>
+          </div>
+          <div class="hint" id="basicHint"></div>
+        </div>
+        <div class="field">
+          <label>付ける特約<span style="font-weight:500;color:var(--muted);font-size:.75rem">（タップで切替）</span></label>
+          <div id="riderBoxes"></div>
+          <div class="hint">口数のある特約は基本契約と同口数で計算します。</div>
+        </div>
+      </div>
+      <div>
+        <div class="result">
+          <div class="cap">この設計の月額掛金</div>
+          <div class="amount" id="totalPrem">－</div>
+          <div class="sumrow">
+            <div>年額<b id="yearPrem">－</b></div>
+            <div>死亡保障<b id="deathCover">－</b></div>
+            <div>入院日額<b id="hospCover">－</b></div>
+            <div>ガン入院日額<b id="cancerCover">－</b></div>
+          </div>
+        </div>
+        <div class="tablewrap" style="margin-bottom:16px"><table id="breakdown"></table></div>
+        <div class="chartwrap"><canvas id="premChart"></canvas></div>
+        <div class="chartnote">
+          現在の口数のまま90歳まで継続した場合の月掛金です。加入限度が下がる年齢では、口数が自動的に限度まで引き下げられます。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. モデルプラン -->
+  <div class="card">
+    <h2><span class="step">6</span>モデルプランの掛金<small>公式サイト記載の契約例と照合済み</small></h2>
+    <p class="lead">下の2つは、公式サイトに掛金が明記されている契約例です。このページのレート表で計算した額と一致することを確認しています。</p>
+    <div class="tablewrap"><table id="modelTable"></table></div>
+    <div class="good" id="modelCheck"></div>
+  </div>
+
+  <!-- 7. 出典 -->
+  <div class="card">
+    <h2><span class="step">7</span>出典と、確認できていないこと</h2>
+
+    <h3 class="sub">数値の裏付けが取れているもの</h3>
+    <div class="good">
+      <ul>
+        <li>団体生命共済・医療共済の1口あたりの掛金レート（全年齢群団）<br>
+            公式サイト記載の契約例3件と1円単位で一致することを確認しています。</li>
+        <li>団体生命共済：1口＝死亡・高度障害100万円、公務・交通災害死亡は1口あたり100万円を上乗せ、最高30口＝3,000万円</li>
+        <li>医療共済 基本契約：1口＝入院日額1,000円、ガン入院は2倍・日数無制限・上皮内ガンを含む、日帰り入院から対象</li>
+        <li>ガン診断特約：1口＝20万円、65歳以下の掛金は1口225円</li>
+        <li>特約は7種類（手術・先進医療・退院後療養・長期入院・ガン診断・生活習慣病・女性特定疾病）で、基本契約の口数以内</li>
+        <li>先進医療特約には口数の設定がないこと／90歳まで更新できること</li>
+      </ul>
+    </div>
+
+    <h3 class="sub">確認できていないもの</h3>
+    <div class="alert">
+      次の項目は一次資料にあたれていないため、このページでは数値を空欄にしています。
+      共済のてびき（トリプルガード）で確認して埋める必要があります。
+      <ul>
+        <li>手術特約の給付倍率（入院中の手術は日額の20倍という記載は見つかりましたが、外来手術などの区分は未確認）</li>
+        <li>先進医療特約の通算限度額</li>
+        <li>退院後療養特約の給付額</li>
+        <li>長期入院特約の給付額・支払開始日数</li>
+        <li>生活習慣病特約の給付日額</li>
+        <li>女性特定疾病特約の給付額と掛金レート（レート表にも入っていません）</li>
+        <li>一般入院の1入院あたり・通算の支払限度日数</li>
+      </ul>
+    </div>
+
+    <h3 class="sub">参照した資料</h3>
+    <div class="srcs">
+      <div class="item"><b>公式</b><span>共済のてびき（トリプルガード）Ⅰ．団体生命共済・医療共済の制度内容<br>
+        <a href="https://www.kyousyokuin.or.jp/guidebook/doc/004_tebiki_tripleGuard.pdf">https://www.kyousyokuin.or.jp/guidebook/doc/004_tebiki_tripleGuard.pdf</a></span></div>
+      <div class="item"><b>公式</b><span>トリプルガード 商品ページ／団体生命共済／医療共済<br>
+        <a href="https://www.kyousyokuin.or.jp/products/triple/">https://www.kyousyokuin.or.jp/products/triple/</a></span></div>
+      <div class="item"><b>公式</b><span>お見積り（トリプルガード）<br>
+        <a href="https://www.kyousyokuin.or.jp/mitsumori/triple/MitsumoriTripleFreeInput.aspx">https://www.kyousyokuin.or.jp/mitsumori/triple/MitsumoriTripleFreeInput.aspx</a></span></div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <h3>注意・免責</h3>
+    本ページは制度内容の理解を助けるための参考資料です。掛金レートおよび1口あたりの保障額は
+    「共済のてびき」（2024年4月時点）に基づいており、制度は改定される場合があります。
+    加入の可否は健康状態によって決まります。給付の可否・金額は事業規約および約款によって定まるため、
+    実際の保障内容と掛金は、必ず公式のお見積りツール、または所属事業所・教職員共済にてご確認ください。
+    このページは教職員共済が作成したものではありません。
+  </div>
+
+  <footer>教職員共済 トリプルガード 商品内容ガイド<br>制度データのみ・個人情報なし／参考用</footer>
+</div>
+
+<script>
+/* =========================================================
+   制度データ
+   出典：共済のてびき（トリプルガード, 2024年4月時点）
+   レートは公式サイト記載の契約例3件と照合済み（下の MODELS 参照）
+   ========================================================= */
+const RATE = {
+  life:      { "≤40":81,  "41-65":327, "66-70":1436, "71-75":2422, "76-80":3972, "81-85":6261, "86-90":9540 },
+  basic:     { "≤40":131, "41-65":277, "66-70":756,  "71-75":1121, "76-80":1596, "81-85":1899, "86-90":2123 },
+  surgery:   { "≤65":141, "66-70":421, "71-75":521,  "76-80":686,  "81-85":585,  "86-90":29 },
+  advanced:  82,
+  discharge: { "≤65":46,  "66-70":179, "71-75":272,  "76-80":418,  "81-85":547,  "86-90":14 },
+  long:      { "≤65":6,   "66-70":28,  "71-75":50,   "76-80":84,   "81-85":153,  "86-90":2 },
+  cancer:    { "≤65":225, "66-70":951, "71-75":1050, "76-80":1120, "81-85":1134, "86-90":51 },
+  lifestyle: { "≤65":44,  "66-70":274, "71-75":346,  "76-80":416,  "81-85":537,  "86-90":5 }
+};
+/* 特約の定義。amount は確認が取れたものだけ数値、未確認は null */
+const RIDERS = [
+  {id:"surgery",  name:"手術特約",         rateKey:"surgery",  units:true,  amount:null, note:"入院日額の20倍（入院中の手術）"},
+  {id:"advanced", name:"先進医療特約",     rateKey:"advanced", units:false, amount:null, note:"技術料の実費・口数なし"},
+  {id:"discharge",name:"退院後療養特約",   rateKey:"discharge",units:true,  amount:null, note:"退院後の療養・通院"},
+  {id:"long",     name:"長期入院特約",     rateKey:"long",     units:true,  amount:null, note:"入院が長期になったとき"},
+  {id:"cancer",   name:"ガン診断特約",     rateKey:"cancer",   units:true,  amount:200000, note:"1口 20万円の一時金"},
+  {id:"lifestyle",name:"生活習慣病特約",rateKey:"lifestyle",units:true, amount:null, note:"糖尿病・心疾患・高血圧性疾患・脳血管疾患"}
+];
+const BENEFIT = { deathPerUnit:1000000, dutyDeathPerUnit:2000000, hospPerUnit:1000, cancerHospPerUnit:2000 };
+
+/* 公式サイトに掛金が明記されている契約例。レート表の検算に使う */
+const MODELS = [
+  { label:"入院日額5,000円＋手術・先進医療・退院後療養", age:"40歳以下", band:"≤40", sband:"≤65",
+    life:0, basic:5, riders:["surgery","advanced","discharge"], official:1672 },
+  { label:"入院日額5,000円＋手術・先進医療・退院後療養", age:"41〜65歳", band:"41-65", sband:"≤65",
+    life:0, basic:5, riders:["surgery","advanced","discharge"], official:2402 },
+  { label:"死亡保障1,000万円（団体生命共済10口）", age:"40歳以下", band:"≤40", sband:"≤65",
+    life:10, basic:0, riders:[], official:810 }
+];
+
+const BANDS = [
+  {key:"≤40",   label:"40歳以下", from:20, to:40},
+  {key:"41-65", label:"41〜65歳", from:41, to:65},
+  {key:"66-70", label:"66〜70歳", from:66, to:70},
+  {key:"71-75", label:"71〜75歳", from:71, to:75},
+  {key:"76-80", label:"76〜80歳", from:76, to:80},
+  {key:"81-85", label:"81〜85歳", from:81, to:85},
+  {key:"86-90", label:"86〜90歳", from:86, to:90}
+];
+
+const jp = n => n.toLocaleString("ja-JP");
+const clamp = (n,lo,hi) => Math.min(hi, Math.max(lo, n));
+const val = id => parseInt(document.getElementById(id).value) || 0;
+function manShort(n){
+  if (n >= 100000000) return jp(Math.round(n/1000000)/100) + "億円";
+  return jp(Math.round(n/10000)) + "万円";
+}
+function getBand(age){
+  if (age <= 40) return "≤40";
+  if (age <= 65) return "41-65";
+  if (age <= 70) return "66-70";
+  if (age <= 75) return "71-75";
+  if (age <= 80) return "76-80";
+  if (age <= 85) return "81-85";
+  return "86-90";
+}
+const getSpecialBand = age => age <= 65 ? "≤65" : getBand(age);
+const maxLifeUnits = age => age <= 65 ? 30 : age <= 70 ? 10 : 5;
+/* 特約レートの参照。先進医療は口数なしの定額 */
+function riderRate(r, age){
+  if (r.rateKey === "advanced") return RATE.advanced;
+  return RATE[r.rateKey][getSpecialBand(age)];
+}
+
+/* ========== 4. レート表 ========== */
+function renderRateTable(){
+  const cols = BANDS.map(b => '<th class="num">' + b.label + '</th>').join("");
+  let html = '<thead><tr><th>項目</th>' + cols + '</tr></thead><tbody>';
+  const row = (name, sub, get) =>
+    '<tr data-rate-row><td>' + name + (sub ? '<em>' + sub + '</em>' : '') + '</td>'
+    + BANDS.map(b => '<td class="num">' + get(b) + '</td>').join("") + '</tr>';
+
+  html += row("団体生命共済", "1口＝死亡保障100万円", b => jp(RATE.life[b.key]));
+  html += row("医療共済 基本契約", "1口＝入院日額1,000円", b => jp(RATE.basic[b.key]));
+  RIDERS.forEach(r => {
+    html += row(r.name, r.note, b => {
+      if (r.rateKey === "advanced") return jp(RATE.advanced);
+      const k = b.key === "≤40" || b.key === "41-65" ? "≤65" : b.key;
+      return jp(RATE[r.rateKey][k]);
+    });
+  });
+  document.getElementById("rateTable").innerHTML = html + '</tbody>';
+}
+function highlightBand(age){
+  const key = getBand(age);
+  const idx = BANDS.findIndex(b => b.key === key);
+  document.querySelectorAll('#rateTable tbody tr').forEach(tr => {
+    tr.classList.remove("band-now");
+    [...tr.children].forEach((td,i) => td.style.background = "");
+    if (idx >= 0) tr.children[idx+1].style.background = "var(--shu-soft)";
+  });
+}
+
+/* ========== 5. プラン ========== */
+const DEFAULT_ON = ["surgery","advanced","discharge","cancer"];
+function renderRiderBoxes(){
+  document.getElementById("riderBoxes").innerHTML = '<div class="tiles">' + RIDERS.map(r =>
+    '<label class="tile"><input type="checkbox" id="rd_' + r.id + '"'
+    + (DEFAULT_ON.includes(r.id) ? ' checked' : '') + ' onchange="recalc()">'
+    + '<span class="tin"><span class="tname">' + r.name + '</span>'
+    + '<span class="tmeta" id="rr_' + r.id + '">－</span>'
+    + '<span class="tmark" aria-hidden="true"></span></span></label>'
+  ).join("") + '</div>';
+}
+/* ステッパー。min/max を尊重し、両端でボタンを無効化する */
+function bump(id, delta){
+  const el = document.getElementById(id);
+  const lo = parseInt(el.min), hi = parseInt(el.max);
+  el.value = clamp((parseInt(el.value) || 0) + delta, lo, hi);
+  recalc();
+}
+function syncSteppers(){
+  ["age","lifeUnits","basicUnits"].forEach(id => {
+    const el = document.getElementById(id);
+    const v = clamp(parseInt(el.value) || 0, parseInt(el.min), parseInt(el.max));
+    document.getElementById(id + "_dn").disabled = v <= parseInt(el.min);
+    document.getElementById(id + "_up").disabled = v >= parseInt(el.max);
+  });
+}
+function planPremium(age, lifeUnits, basicUnits, on){
+  const b = getBand(age);
+  const lu = Math.min(lifeUnits, maxLifeUnits(age));
+  const parts = [];
+  if (lu > 0)         parts.push({k:"団体生命共済", d:lu + "口", v:lu * RATE.life[b], c:"#16283C"});
+  if (basicUnits > 0) parts.push({k:"医療共済 基本契約", d:basicUnits + "口", v:basicUnits * RATE.basic[b], c:"#2A6FB0"});
+  RIDERS.forEach(r => {
+    if (!on[r.id]) return;
+    const rate = riderRate(r, age);
+    const u = r.units ? basicUnits : 1;
+    if (u <= 0) return;
+    parts.push({k:r.name, d:r.units ? u + "口" : "口数なし", v:u * rate,
+      c:{surgery:"#5B8C5A",advanced:"#8FB4D4",discharge:"#C9822B",long:"#A8B3BD",cancer:"#8E5A9E",lifestyle:"#6B8E9E"}[r.id]});
+  });
+  return {parts, total: parts.reduce((s,p)=>s+p.v,0), lu};
+}
+function recalc(){
+  const age        = clamp(val("age") || 40, 20, 90);
+  const lifeInput  = clamp(val("lifeUnits"), 0, 30);
+  const basicUnits = clamp(val("basicUnits"), 0, 10);
+  const on = {}; RIDERS.forEach(r => on[r.id] = document.getElementById("rd_" + r.id).checked);
+
+  const cap = maxLifeUnits(age);
+  const {parts, total, lu} = planPremium(age, lifeInput, basicUnits, on);
+
+  document.getElementById("bandHint").textContent  = "年齢群団 " + getBand(age) + "（特約は " + getSpecialBand(age) + "）";
+  document.getElementById("lifeHint").innerHTML    = lifeInput > cap
+    ? 'この年齢の加入限度は<b>' + cap + '口</b>です。' + cap + '口で計算しています。'
+    : '加入限度 ' + cap + '口（死亡保障 ' + manShort(cap * BENEFIT.deathPerUnit) + '）';
+  document.getElementById("basicHint").textContent = "加入限度 10口（入院日額 10,000円）。特約はこの口数以内です。";
+
+  RIDERS.forEach(r => {
+    const u = r.units ? basicUnits : 1;
+    document.getElementById("rr_" + r.id).textContent =
+      r.units ? jp(riderRate(r, age)) + "円 × " + u + "口" : jp(riderRate(r, age)) + "円 / 口数なし";
+  });
+  syncSteppers();
+
+  document.getElementById("totalPrem").innerHTML  = jp(total) + '<span class="unit">円 / 月</span>';
+  document.getElementById("yearPrem").textContent = jp(total * 12) + "円";
+  document.getElementById("deathCover").textContent  = manShort(lu * BENEFIT.deathPerUnit);
+  document.getElementById("hospCover").textContent   = jp(basicUnits * BENEFIT.hospPerUnit) + "円/日";
+  document.getElementById("cancerCover").textContent = jp(basicUnits * BENEFIT.cancerHospPerUnit) + "円/日";
+
+  document.getElementById("breakdown").innerHTML =
+    '<thead><tr><th>内訳</th><th>口数</th><th class="num">1口あたり</th><th class="num">月額</th></tr></thead><tbody>'
+    + (parts.length
+        ? parts.map(p => '<tr><td>' + p.k + '</td><td>' + p.d + '</td>'
+            + '<td class="num">' + jp(Math.round(p.v / (p.d === "口数なし" ? 1 : parseInt(p.d)))) + '円</td>'
+            + '<td class="num">' + jp(p.v) + '円</td></tr>').join("")
+        : '<tr><td colspan="4">口数と特約を選んでください</td></tr>')
+    + '<tr class="hi"><td colspan="3">合計（月額）</td><td class="num">' + jp(total) + '円</td></tr></tbody>';
+
+  highlightBand(age);
+  updateChart(age, lifeInput, basicUnits, on);
+}
+
+/* ========== グラフ ========== */
+const bandPlugin = {
+  id:"bandPlugin",
+  beforeDatasetsDraw(chart){
+    const {ctx, chartArea:a, scales:{x}} = chart;
+    if (!a) return;
+    ctx.save();
+    BANDS.forEach((b,i)=>{
+      const x1 = x.getPixelForValue(Math.max(b.from-.5, x.min));
+      const x2 = x.getPixelForValue(Math.min(b.to+.5, x.max));
+      if (x2 <= a.left || x1 >= a.right) return;
+      const L = Math.max(x1,a.left), R = Math.min(x2,a.right);
+      ctx.fillStyle = i%2 ? "rgba(42,111,176,.06)" : "rgba(22,40,60,.025)";
+      ctx.fillRect(L,a.top,R-L,a.bottom-a.top);
+      if (x1 > a.left){
+        ctx.strokeStyle="rgba(22,40,60,.2)"; ctx.setLineDash([3,3]); ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(L,a.top); ctx.lineTo(L,a.bottom); ctx.stroke(); ctx.setLineDash([]);
+      }
+      if (R-L > 44){
+        ctx.fillStyle="rgba(22,40,60,.45)"; ctx.font="600 10px 'IBM Plex Mono', monospace";
+        ctx.textAlign="center"; ctx.fillText(b.label,(L+R)/2,a.top+12);
+      }
+    });
+    ctx.restore();
+  }
+};
+const nowPlugin = {
+  id:"nowPlugin",
+  afterDatasetsDraw(chart,args,opts){
+    const {ctx, chartArea:a, scales:{x}} = chart;
+    const age = opts && opts.age;
+    if (!a || !age || age < x.min || age > x.max) return;
+    const px = x.getPixelForValue(age);
+    ctx.save();
+    ctx.strokeStyle="#C4402A"; ctx.lineWidth=2; ctx.setLineDash([5,4]);
+    ctx.beginPath(); ctx.moveTo(px,a.top); ctx.lineTo(px,a.bottom); ctx.stroke(); ctx.setLineDash([]);
+    const label = age + "歳";
+    ctx.font="700 11px 'Zen Kaku Gothic New', sans-serif";
+    const w = ctx.measureText(label).width + 16;
+    const lx = Math.max(a.left+2, Math.min(px - w/2, a.right - w - 2));
+    ctx.fillStyle="#C4402A"; ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(lx,a.bottom-22,w,18,9); else ctx.rect(lx,a.bottom-22,w,18);
+    ctx.fill();
+    ctx.fillStyle="#fff"; ctx.textAlign="center"; ctx.textBaseline="middle";
+    ctx.fillText(label, lx+w/2, a.bottom-13);
+    ctx.restore();
+  }
+};
+let chart = null, chartFailed = false;
+function buildSeries(currentAge, lifeUnits, basicUnits, on){
+  const start = Math.max(20, currentAge - 5), d = [];
+  for (let a = start; a <= 90; a++) d.push({x:a, y: planPremium(a, lifeUnits, basicUnits, on).total});
+  return {data:d, start};
+}
+function updateChart(age, lifeUnits, basicUnits, on){
+  if (chartFailed) return;
+  const wrap = document.querySelector(".chartwrap");
+  if (typeof Chart === "undefined"){
+    chartFailed = true;
+    wrap.innerHTML = '<div style="display:grid;place-items:center;height:100%;padding:16px;text-align:center;'
+      + 'font-size:.82rem;color:#62707E;border:1px dashed #B9C6D2;border-radius:11px">'
+      + 'グラフの描画ライブラリを読み込めませんでした。<br>上の表の数値はそのままご利用いただけます。</div>';
+    return;
+  }
+  const s = buildSeries(age, lifeUnits, basicUnits, on);
+  try {
+    if (chart){
+      chart.data.datasets[0].data = s.data;
+      chart.options.plugins.nowPlugin.age = age;
+      chart.options.scales.x.min = s.start;
+      chart.update();
+      return;
+    }
+    chart = new Chart(document.getElementById("premChart").getContext("2d"), {
+      type:"line",
+      data:{datasets:[{data:s.data, parsing:false, stepped:"before",
+        borderColor:"#16283C", borderWidth:2.4, backgroundColor:"rgba(42,111,176,.14)",
+        fill:true, pointRadius:0, pointHitRadius:14}]},
+      options:{
+        responsive:true, maintainAspectRatio:false, animation:{duration:300},
+        interaction:{mode:"nearest", axis:"x", intersect:false},
+        layout:{padding:{top:6}},
+        plugins:{
+          legend:{display:false},
+          nowPlugin:{age:age},
+          tooltip:{backgroundColor:"#16283C", padding:11, displayColors:false,
+            titleFont:{family:"'Zen Kaku Gothic New', sans-serif", size:12},
+            bodyFont:{family:"'IBM Plex Mono', monospace", size:14, weight:"600"},
+            callbacks:{
+              title: it => it[0].parsed.x + "歳（群団 " + getBand(it[0].parsed.x) + "）",
+              label: it => jp(it.parsed.y) + "円 / 月"
+            }}
+        },
+        scales:{
+          x:{type:"linear", min:s.start, max:90, grid:{display:false},
+             ticks:{stepSize:5, color:"#555", font:{family:"'IBM Plex Mono', monospace", size:11}, callback:v=>v+"歳"}},
+          y:{beginAtZero:true,
+             title:{display:true, text:"月掛金（円）", font:{size:11}, color:"#62707E"},
+             ticks:{color:"#555", font:{family:"'IBM Plex Mono', monospace", size:11}, callback:v=>jp(v)},
+             grid:{color:"rgba(22,40,60,.08)"}}
+        }
+      },
+      plugins:[bandPlugin, nowPlugin]
+    });
+  } catch (e) {
+    chartFailed = true;
+    wrap.innerHTML = '<div style="display:grid;place-items:center;height:100%;padding:16px;text-align:center;'
+      + 'font-size:.82rem;color:#62707E;border:1px dashed #B9C6D2;border-radius:11px">'
+      + 'グラフを描画できませんでした。<br>上の表の数値はそのままご利用いただけます。</div>';
+  }
+}
+
+/* ========== 6. モデルプラン照合 ========== */
+function renderModels(){
+  let allMatch = true;
+  const rows = MODELS.map(m => {
+    const on = {}; RIDERS.forEach(r => on[r.id] = m.riders.includes(r.id));
+    const age = m.band === "≤40" ? 40 : m.band === "41-65" ? 50 : 70;
+    const calc = planPremium(age, m.life, m.basic, on).total;
+    const ok = calc === m.official;
+    if (!ok) allMatch = false;
+    return '<tr' + (ok ? '' : ' style="background:var(--shu-soft)"') + '><td>' + m.label + '</td>'
+      + '<td>' + m.age + '</td>'
+      + '<td class="num">' + jp(m.official) + '円</td>'
+      + '<td class="num">' + jp(calc) + '円</td>'
+      + '<td class="num">' + (ok ? '<span class="tag tag-ok">一致</span>' : '<span class="tag tag-tbd">不一致</span>') + '</td></tr>';
+  }).join("");
+  document.getElementById("modelTable").innerHTML =
+    '<thead><tr><th>契約例</th><th>年齢</th><th class="num">公式サイト記載</th>'
+    + '<th class="num">このページの計算</th><th class="num">照合</th></tr></thead><tbody>' + rows + '</tbody>';
+  document.getElementById("modelCheck").innerHTML = allMatch
+    ? '<strong>3件すべて一致しました。</strong>このページのレート表は、公式サイトが公表している掛金と1円単位で合致しています。'
+    : '<strong>一致しない項目があります。</strong>レート表の数値を共済のてびきで再確認してください。';
+}
+
+/* ========== 特約レートの注意喚起 ========== */
+function renderAnomaly(){
+  const drops = RIDERS.filter(r => r.rateKey !== "advanced")
+    .map(r => ({name:r.name, a:RATE[r.rateKey]["81-85"], b:RATE[r.rateKey]["86-90"]}))
+    .filter(x => x.b < x.a * 0.2);
+  const el = document.getElementById("rateAnomaly");
+  if (!drops.length){ el.style.display = "none"; return; }
+  el.innerHTML = '<strong>86〜90歳の特約レートについて</strong><br>'
+    + drops.map(d => d.name + '（' + jp(d.a) + '円 → ' + jp(d.b) + '円）').join('、')
+    + ' のように、81〜85歳から86〜90歳にかけて特約の掛金が9割以上下がる形になっています。'
+    + 'この年齢帯で特約の保障内容自体が変わる可能性があるため、86歳以降の設計を検討する場合は'
+    + '共済のてびきで保障内容と掛金の両方をご確認ください。';
+}
+
+renderRateTable();
+renderRiderBoxes();
+renderModels();
+renderAnomaly();
+recalc();
+</script>
+</body>
+</html>
